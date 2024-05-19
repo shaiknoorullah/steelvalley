@@ -26,8 +26,63 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.border-gradient {
+  /* position: absolute; */
+  border: 1px solid transparent;
+
+  border-image: linear-gradient(to right, #2a2a2a, #777, #2a2a2a);
+  border-image-slice: 1;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.scrllcomp {
+  overflow-y: auto; /* or overflow-y: scroll; */
+  direction: rtl;
+}
+
+/* Style the scrollbar */
+.scrllcomp::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Track (the background of the scrollbar) */
+.scrllcomp::-webkit-scrollbar-track {
+  background: black; /* Color of the scrollbar track */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Handle (the draggable part of the scrollbar) */
+.scrllcomp::-webkit-scrollbar-thumb {
+  background: #939393; /* Color of the scrollbar handle */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Handle on hover */
+.scrllcomp::-webkit-scrollbar-thumb:hover {
+  background: darkgray; /* Color of the scrollbar handle on hover */
+}
+
+.herobar {
+  background: linear-gradient(
+    92.29deg,
+    rgba(255, 255, 255, 0.15) 10.83%,
+    rgba(153, 153, 153, 0.15) 111.96%
+  );
+  border: 1px solid;
+  border-radius: 54px;
+  border-image-source: linear-gradient(
+    95.28deg,
+    rgba(198, 198, 198, 0.2) -18.64%,
+    rgba(49, 49, 49, 0.002) 149.39%
+  );
+}
+
+.active-tab {
+  background-color: lightblue;
 }
