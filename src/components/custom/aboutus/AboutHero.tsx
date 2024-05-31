@@ -3,7 +3,11 @@ import React from "react";
 import { HeroParallax } from "@/components/ui/HeroParallax";
 
 export function AboutHeroParallax() {
-  return <HeroParallax products={products} />;
+  return (
+    <div className="">
+      <HeroParallax products={products} />
+    </div>
+  );
 }
 export const products = [
   {

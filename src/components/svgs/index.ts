@@ -1,2 +1,3 @@
 import { FlashSvg } from "./FlashSvg";
-export {FlashSvg}
+import { NavbarSvg } from "./NavbarSvg";
+export {FlashSvg,NavbarSvg}

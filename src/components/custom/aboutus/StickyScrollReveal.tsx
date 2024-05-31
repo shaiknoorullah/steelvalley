@@ -55,10 +55,10 @@ const content = [
 export function StickyScrollRevealDemo() {
   return (
     <div className="base:p-5 lg:p-10 ">
-      <Icon className="absolute h-6 w-6 -top-3 -left-3  z-50 text-white " />
-      <Icon className="absolute h-6 w-6 -bottom-3 -left-3 text-white" />
-      <Icon className="absolute h-6 w-6 -top-3 -right-3 text-white " />
-      <Icon className="absolute h-6 w-6 -bottom-3 -right-3 text-white " />
+      <Icon className="absolute h-9 w-9 -top-5 -left-5  z-50 text-white " />
+      <Icon className="absolute h-9 w-6 -bottom-5 -left-5 text-white" />
+      <Icon className="absolute h-9 w-9 -top-5 -right-5 text-white " />
+      <Icon className="absolute h-9 w-9 -bottom-5 -right-5 text-white " />
       <StickyScroll content={content} />
     </div>
   );

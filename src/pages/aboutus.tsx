@@ -1,4 +1,4 @@
-import { Footer } from "@/components/custom/Footer";
+import { Footer } from "@/components/custom/layout/Footer";
 import { AboutHeroParallax } from "@/components/custom/aboutus/AboutHero";
 import AboutMarquee from "@/components/custom/aboutus/AboutMarquee";
 import { TracingBeamDemo } from "@/components/custom/aboutus/BeamAndStickyScroll";

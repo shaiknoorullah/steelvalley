@@ -40,22 +40,25 @@ const HomeHero = () => {
     },
   ];
   return (
-    <div className="w-full flex flex-col items-center md:h-screen overflow-hidden base:gap-14 md:justify-between relative">
-      <div className="absolute md:flex -z-50 md:top-20">
+    <div className="w-full flex flex-col items-center md:min-h-screen h-screen overflow-hidden base:gap-14 md:gap-20 relative">
+      <div className="absolute md:flex -z-50 md:top-0 blur-3xl opacity-90">
         <Image
           alt="gradinet"
           src={GradientImage}
-          className="h-[800px] w-screen lg:h-[950px] md:h-[700px] base:opacity-60 md:opacity-100"
+          className="h-[800px] w-screen lg:h-[1050px] md:h-[700px] base:opacity-60 md:opacity-100"
         />
       </div>
       {/* bar */}
-      <div className="flex herobar base:justify-center md:justify-between items-center rounded-full base:py-2 base:px-3 md:p-4 mt-44 z-20">
+      <div className="flex  herobar lg:h-[50px] base:justify-center md:gap-10 items-center rounded-full base:py-2 base:px-5 md:p-4 mt-44 z-20">
         <FlashSvg />
-        <div className="flex base:flex-col md:flex-row md:gap-7 base:gap-2">
+        <div className="flex base:flex-col md:flex-row md:gap-14 base:gap-2 ml-2">
           <Text variant="barText">
             We've successfully completed 100 projects
           </Text>
-          <Text className="flex items-center gap-4">
+          <Text
+            variant="barText"
+            className="flex text-white items-center gap-4"
+          >
             Read full casestudy
             <span>
               <svg
@@ -77,32 +80,32 @@ const HomeHero = () => {
         </div>
       </div>
       {/* title */}
-      <div className="w-[70%] md:w-[80%] md:flex flex-col base:hidden ">
+      <div className="md:w-[80%] md:flex flex-col base:hidden ">
         <Text
-          className="flex justify-center items-center align-middle text-center"
+          className="items-center align-middle text-center"
           variant="heroTitle"
         >
-          Market Leaders in Custom Industrial-Grade
+          Market Leaders in Custom Industrial-Grade Commercial Kitchen Equipment
         </Text>
-        <Text
+        {/* <Text
           className="flex justify-center items-center align-middle text-center"
           variant="heroTitle"
         >
           {" "}
           Commercial Kitchen Equipment
-        </Text>
+        </Text> */}
       </div>
       <Text
-        className="base:flex md:hidden w-[min(100vw,800px)] text-center"
+        className="base:flex flex-wrap  justify-center md:hidden w-[90%] text-center"
         variant="heroTitle"
       >
         Market Leaders in Custom Industrial-Grade Commercial Kitchen Equipment
       </Text>
-      <div className="flex gap-10 ">
+      <div className="flex gap-10 z-10">
         <Button variant="white">Get A Custom Quote</Button>
         <Button variant="black">Learn More</Button>
       </div>
-      <div className="max-w-[1920px] w-screen">
+      <div className="absolute -bottom-5 max-w-[1920px] w-screen ">
         <InfiniteMovingCards
           items={testimonials}
           bgcolor={true}

@@ -1,7 +1,7 @@
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import React from "react";
-import { SignupForm } from "../SignupForm";
 import Text from "@/components/ui/Text";
+import { SignupForm } from "@/components/ui/SignupForm";
 
 const ContactUs = () => {
   const testimonials = [
@@ -19,16 +19,16 @@ const ContactUs = () => {
     },
   ];
   return (
-    <div className="flex w-full justify-center  lg:h-screen items-center  py-10">
-      <div className="base:w-[80%] sm:w-[70%] md:w-[80%]  max-w-[1920px] flex justify-center items-center">
-        <div className="w-full flex lg:flex-row base:flex-col base:gap-20      md:justify-between">
-          <div className="flex w-full    lg:w-[65%] flex-col base:gap-9 md:justify-between ">
-            <div className="flex flex-col gap-6 lg:w-[65%]">
-              <Text className="text-[max(1rem,min(1.5vw,30px))] ">
+    <div className="flex w-full justify-center lg:h-screen items-center my-32">
+      <div className="w-[80%] max-w-[1920px] flex justify-center items-center ">
+        <div className=" lg:flex base:flex-col lg:flex-row  gap-20">
+          <div className="flex w-full lg:w-[50%]  flex-col base:gap-9 md:gap-20 lg:gap-32">
+            <div className="flex flex-col gap-10 md:w-[65%]">
+              <Text variant="shortHeadings">
                 Join Us and let’s make the future of industrial kitchens more
                 stronger and brighter.
               </Text>
-              <Text className="text-[#ECECEC] font-medium">
+              <Text variant="default" className="text-[#ECECEC] font-medium">
                 Experience the seamless transition as our precision-engineered
                 storage solutions meticulously organize your space, facilitating
                 effortless accessibility to every tool and ingredient. Our
@@ -37,18 +37,10 @@ const ContactUs = () => {
                 productivity.
               </Text>
             </div>
-            <ContactCrads
-              testimonials={testimonials}
-              // direction="right"
-              // speed="fast"
-
-              // className="font-bold"
-            />
+            <ContactCrads testimonials={testimonials} />
           </div>
-          <div className=" lg:w-[35%] flex items-center justify-center ">
-            <div className="w-full  ">
-              <SignupForm />
-            </div>
+          <div className="lg:w-[50%] mt-20 lg:mt-0 flex base:justify-center  lg:justify-end ">
+            <SignupForm />
           </div>
         </div>
       </div>
@@ -76,15 +68,15 @@ const ContactCrads = ({
           key={index}
           className="flex flex-col bg-white justify-between  px-5 base:py-5 md:py-9 rounded-md"
         >
-          <Text className="z-20 text-marqueetext leading-[1.6] text-black  font-semibold">
+          <Text className="z-20 text-marqueetext leading-[1.6] text-[#2F2F2F]  font-semibold">
             {item.quote}
           </Text>
           <div className="relative z-20 mt-6 flex flex-row items-center">
             <span className="flex flex-col gap-1">
-              <span className="text-[max(0.5rem,max(0.7vw,12px))] leading-[1.6] text-gray-400 font-normal">
+              <span className="md:text-[12px] base:text-[9px] leading-[1.6] text-gray-400 font-normal">
                 {item.name}
               </span>
-              <span className="text-[max(0.5rem,max(0.7vw,12px))] leading-[1.6] text-gray-400 font-normal">
+              <span className="md:text-[12px] base:text-[9px] leading-[1.6] text-gray-400 font-normal">
                 {item.title}
               </span>
             </span>

@@ -86,7 +86,7 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex  shrink-0 gap-4 py-4 w-max flex-nowrap overflow-hidden ",
+          " flex  shrink-0 gap-16  w-max flex-nowrap overflow-hidden ",
           start && "animate-scroll ",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -107,12 +107,12 @@ export const InfiniteMovingCards = ({
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
-              <Text className="z-20 text-marqueetext leading-[1.6] text-white  font-semibold">
+              <Text className="z-20 text-marqueetext leading-[1.6] text-[#959595]  font-medium">
                 {item.quote}
               </Text>
               <div className="relative z-20 mt-6 flex flex-row  items-center">
                 <span className="flex flex-col gap-1">
-                  <span className="text-[max(0.5rem,max(0.7vw,12px))] leading-[1.6] text-gray-400 font-normal">
+                  <span className="text-[max(0.5rem,max(0.7vw,12px))] leading-[1.6] text-[#878787] font-normal">
                     {item.name}
                   </span>
                   {/* <span className=" text-sm leading-[1.6] text-gray-400 font-normal">

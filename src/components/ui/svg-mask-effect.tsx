@@ -51,11 +51,11 @@ export const MaskContainer = ({
         backgroundImage: isHovered
           ? "url(/kitchens/kitchendemo.jpg)"
           : "url(/kitchens/kitchendemo.jpg)",
-        opacity: isHovered ? "80%" : "80%",
+        opacity: isHovered ? "30%" : "30%",
       }}
     >
       <motion.div
-        className="w-full h-full bg-no-repeat  flex items-center justify-center text-6xl absolute bg-white/25  bg-grid-white/[0.2] text-white [mask-image:url(/svgmaskeffect.svg)] [mask-size:40px] [mask-repeat:no-repeat]"
+        className="w-full h-full bg-no-repeat  flex items-center justify-center text absolute bg-white/25  bg-grid-white/[0.2] text-[#ECECEC]  [mask-image:url(/svgmaskeffect.svg)] [mask-size:100px] [mask-repeat:no-repeat]"
         animate={{
           WebkitMaskPosition: `${mousePosition.x - maskSize / 2}px ${
             mousePosition.y - maskSize / 2
@@ -64,7 +64,7 @@ export const MaskContainer = ({
         }}
         transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
       >
-        <div className="absolute inset-0  h-full w-full z-0 opacity-50" />
+        <div className="absolute inset-0  h-full w-full z-0 opacity-100" />
         <div
           onMouseEnter={() => {
             setIsHovered(true);
@@ -72,13 +72,13 @@ export const MaskContainer = ({
           onMouseLeave={() => {
             setIsHovered(false);
           }}
-          className="  text-center text-white base:w-[100vw] p-2 leading-6 lg:w-full  font-bold relative z-20 select-none"
+          className="w-[80%] text-center text-white p-2 leading-6   font-bold relative z-20 select-none"
         >
           {children}
         </div>
       </motion.div>
 
-      <div className="base:w-[90vw] lg:w-full h-full flex items-center justify-center  text-white">
+      <div className="w-[100%] h-full flex items-center justify-center font-bold text-center text-white">
         {revealText}
       </div>
     </motion.div>

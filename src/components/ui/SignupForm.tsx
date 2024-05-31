@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { Label } from "../ui/Label";
-import { Input } from "../ui/Input";
+import { Label } from "./Label";
+import { Input } from "./Input";
 import { cn } from "@/lib/utils";
 import {
   IconBrandGithub,
@@ -16,7 +16,7 @@ export function SignupForm() {
   };
   return (
     <div
-      className=" lg:max-w-[440px] w-full rounded-md p-3 md:p-6 lg:p-6 2xl:p-8 shadow-input border-[1px] border-gray-900"
+      className=" max-w-[480px]  w-full rounded-md p-3 md:p-6 lg:p-6 2xl:p-8 shadow-input border-[1px] border-gray-900"
       style={{
         background:
           "linear-gradient(157.27deg, rgba(65, 65, 65, 0.3) -39.05%, rgba(36, 36, 36, 0) 135.1%)",
@@ -25,7 +25,7 @@ export function SignupForm() {
           "radial-gradient(174.8% 174.8% at 135.3% 155.27%, rgba(0, 0, 0, 0.6) 0%, rgba(83, 83, 83, 0.6) 100%)",
       }}
     >
-      <form className="my-8" onSubmit={handleSubmit}>
+      <form className="py-14" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="firstname">Full Name</Label>
@@ -43,10 +43,14 @@ export function SignupForm() {
 
         <LabelInputContainer className="mb-4">
           <Label htmlFor="Number">Message</Label>
-          <Input type="text" placeholder="" />
+          <Input
+            type="text"
+            placeholder=""
+            className="base:h-[100px] md:h-[125px]"
+          />
         </LabelInputContainer>
         <button
-          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-800 block dark:bg-zinc-800 w-full text-white rounded-sm h-10 font-medium "
           type="submit"
         >
           Sign up &rarr;

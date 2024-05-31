@@ -24,11 +24,16 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-family: "Silka";
+}
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: black;
 }
 
 .border-gradient {
   /* position: absolute; */
-  border: 1px solid transparent;
+  border: 1px solid;
 
   border-image: linear-gradient(to right, #2a2a2a, #777, #2a2a2a);
   border-image-slice: 1;
@@ -85,4 +90,16 @@ body {
 
 .active-tab {
   background-color: lightblue;
+}
+
+.char {
+  overflow: hidden;
+  margin-right: 5px;
+}
+
+@media only screen and (max-width: 800px) {
+  .char {
+    overflow: hidden;
+    margin-right: 5px;
+  }
 }

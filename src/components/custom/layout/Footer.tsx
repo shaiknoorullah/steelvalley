@@ -3,15 +3,19 @@ import React from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import Gradient from "../../../public/footer/footergradient.svg";
-import { Input } from "../ui/Input";
-import { Button } from "../ui/Button";
-import Text from "../ui/Text";
-import { BottomGradient } from "./SignupForm";
+import Gradient from "../../../../public/footer/footergradient.svg";
+import { Input } from "../../ui/Input";
+import { Button } from "../../ui/Button";
+import Text from "../../ui/Text";
+import { BottomGradient } from "../../ui/SignupForm";
+import { shaderMaterial } from "@react-three/drei";
 
-const World = dynamic(() => import("../ui/globe/Globe").then((m) => m.World), {
-  ssr: false,
-});
+const World = dynamic(
+  () => import("../../ui/globe/Globe").then((m) => m.World),
+  {
+    ssr: false,
+  }
+);
 
 export function Footer() {
   const globeConfig = {
@@ -401,8 +405,8 @@ export function Footer() {
   ];
 
   return (
-    <div className="flex lg:flex-row base:flex-col items-center lg:justify-center pt-2 md:h-[60vh] bg-black text-white relative base:w-[90%] md:w-full max-w-[1920px] z-[]">
-      <div className="base:h-[130vh] lg:w-full     md:h-[35rem] px-4 ">
+    <div className="flex lg:flex-row base:flex-col items-center lg:justify-center pt-2 md:h-[60vh] bg-transparent  relative base:w-[100%] md:w-full max-w-[1920px] lg:mt-6">
+      <div className="base:h-[130vh] lg:w-full md:h-[40rem] lg:h-[50rem] px-4 overflow-hidden">
         <motion.div
           initial={{
             opacity: 0,
@@ -417,12 +421,12 @@ export function Footer() {
           }}
           className="div"
         >
-          <div className="z-10 w-full flex justify-center its">
+          <div className="z-50 w-full flex justify-center its">
             <FooterGrid />
           </div>
         </motion.div>
         {/* <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" /> */}
-        <div className="absolute base:w-[100%] md:w-[70%]  base:left-28 base:-bottom-50  md:-left-52  md:-bottom-[550px] h-[300px] md:h-[1200px] ">
+        <div className="absolute w-[100%]   base:-left-36 base:-bottom-28  md:-left-[300px] lg:-left-[500px] md:-bottom-[400px]   lg:-bottom-[400px] h-[400px] md:h-[900px]  lg:h-[1200px] z-20 backdrop-blur-sm bg-transparent">
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
         {/* <div className=" absolute right-0 -top-80"> */}
@@ -430,7 +434,7 @@ export function Footer() {
         <Image
           src={Gradient}
           alt="gradient"
-          className="absolute base:-right-20 md:right-10 base:bottom-0 lg:-right-10 lg:-top-64 z-10"
+          className="absolute base:-right-20 md:-right-10 base:-bottom-10 md:-top-64 lg:-right-10  lg:-top-[400px]  z-10 h-[350px] md:h-[1000px] lg:h-[1150px] brightness-150 blur-lg scale-x-150 scale-y-150"
         />
         {/* </div> */}
       </div>
@@ -456,14 +460,16 @@ const FooterGrid = () => {
   ];
 
   return (
-    <div className="flex  base:flex-col w-[90%]  max-w-[1440px]  md:flex-row md:justify-between gap-10  absolute z-50">
+    <div className="flex  base:flex-col w-[80%]  max-w-[1440px] bg-transparent  md:flex-row md:justify-between gap-10  absolute z-50">
       {/* Map over columnData to render the first three columns */}
       {columnData.map((column, index) => (
         <div key={index} className="">
           {/* Title */}
-          <h4 className="font-bold">{column.title}</h4>
+          <h4 className="font-bold text-[max(0.8rem,min(0.8vw,18px))]">
+            {column.title}
+          </h4>
           {/* Child elements */}
-          <div className="flex flex-col gap-3 mt-3">
+          <div className="flex flex-col gap-3 mt-7">
             {column.children.map((child, idx) => (
               <Text variant="default" key={idx} className="text-description">
                 {child}
@@ -477,7 +483,7 @@ const FooterGrid = () => {
       <div className="flex flex-col justify-between ">
         {/* Title */}
         <div className="lg:w-[400px] flex flex-col gap-10">
-          <h4 className="font-bold">
+          <h4 className="font-bold text-[max(0.8rem,min(0.8vw,18px))]">
             Tailored Solution For Every Kitchen Needs: Cooking, Washing, Storage
             and Work Stations.
           </h4>
