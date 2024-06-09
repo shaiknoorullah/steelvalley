@@ -25,7 +25,7 @@ export function SignupForm() {
           "radial-gradient(174.8% 174.8% at 135.3% 155.27%, rgba(0, 0, 0, 0.6) 0%, rgba(83, 83, 83, 0.6) 100%)",
       }}
     >
-      <form className="py-14 z-50" onSubmit={handleSubmit}>
+      <form className="py-14 flex flex-col gap-4 z-50" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="firstname">Full Name</Label>

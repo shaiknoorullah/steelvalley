@@ -33,7 +33,7 @@ export function ProductsHeroSection() {
       <LoadingScreen state={isPending} />
       <div className="md:h-screen w-full rounded-md flex md:items-center md:justify-center  antialiased bg-grid-white/[0.02] relative overflow-hidden">
         <Spotlight
-          className="-top-20 left-0 md:left-60 md:-top-20"
+          className="-top-20 left-0 md:left-96 md:-top-20"
           fill="white"
         />
         <div className="flex flex-col items-center text-center gap-8  relative z-10 base:w-[100%]  md:w-[80%] pt-32 md:pt-2">

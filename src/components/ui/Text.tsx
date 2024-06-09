@@ -17,7 +17,7 @@ const TextVariants = tv({
       smallHeading: "text-md",
       inputDescription: "text-sm text-light-doccolor",
       theme: "",
-      heroTitle: "font-normal text-[max(1.2rem,min(4vw,65px))]",
+      heroTitle: "font-normal  text-[max(1.2rem,min(4vw,65px))]",
       secondaryTitle: "text-[max(1rem,min(2.1vw,45px))] lg:leading-[50px]",
       shortHeadings: "text-[max(1rem,min(1.3vw,28px))] text-[#ECECEC]",
       navbarText: "text-[max(1rem,min(1.1rem,24px))] font-semibold",

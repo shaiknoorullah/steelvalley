@@ -43,7 +43,7 @@ const ContactUs = () => {
   });
 
   return (
-    <div className="flex w-full justify-center lg:h-screen items-center my-20">
+    <div className="flex w-full justify-center lg:h-screen items-cente base:my-40 md:mt-1 md:my-20">
       <div className="w-[80%] max-w-[1920px] flex justify-center items-center ">
         <div className=" lg:flex base:flex-col lg:flex-row  gap-20">
           <div className="flex w-full lg:w-[50%]  flex-col base:gap-9 md:gap-20 lg:gap-32">

@@ -184,7 +184,7 @@ const SingleProduct: React.FC = () => {
       <div className="w-full flex flex-col items-center overflow-hidden">
         <div className="max-w-[1920px] flex flex-col gap-20">
           <Navbar />
-          <div className="flex justify-center items-center h-screen base:mt-32 md:mt-10">
+          <div className="flex justify-center items-center h-screen base:mt-48 md:mt-10">
             <div className="w-[85%] h-fit flex base:flex-col md:flex-row base:gap-10 md:gap-20">
               <div className="md:w-1/2  flex flex-col gap-2 md:gap-6">
                 <img

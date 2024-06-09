@@ -105,7 +105,7 @@ export default function Home() {
 
   return (
     <div className="w-full flex flex-col items-center overflow-hidden ">
-      <div className=" max-w-[1920px] flex flex-col">
+      <div className=" max-w-[1920px] flex flex-col ">
         <Navbar />
         <HomeHero />
         <HomeMaskComponent />

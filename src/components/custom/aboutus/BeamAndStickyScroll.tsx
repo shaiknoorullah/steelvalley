@@ -5,8 +5,8 @@ import SvgAboutScrolling from "@/components/svgs/SvgAboutScrolling";
 
 export function TracingBeamDemo() {
   return (
-    <div className="w-full flex base:h-fit lg:h- justify-center mt-10 ">
-      <div className="antialiased  relative max-w-[1440px] w-[80%] lg:px-6 py-10 border-gradient border-[1px] ">
+    <div className="w-full flex base:h-fit lg:h- justify-center mt-10  ">
+      <div className="antialiased  relative max-w-[1440px] w-[80%] lg:px-6 py-10 border-gradient border-[1px] backdrop-blur-3xl ">
         <div className="absolute base:-left-[180px] base:bottom-10 brightness-75 scale-y-75 scale-x-125 lg:h-fit md:-bottom-[65%] md:-left-[10%] ">
           <SvgAboutScrolling />
         </div>
