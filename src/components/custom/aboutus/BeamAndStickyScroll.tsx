@@ -1,9 +1,5 @@
 "use client";
 import React from "react";
-// import { calsans } from "@/fonts/calsans";
-import Image from "next/image";
-import { twMerge } from "tailwind-merge";
-import { TracingBeam } from "@/components/ui/TracingBeam";
 import { StickyScrollRevealDemo } from "./StickyScrollReveal";
 import SvgAboutScrolling from "@/components/svgs/SvgAboutScrolling";
 
@@ -11,7 +7,7 @@ export function TracingBeamDemo() {
   return (
     <div className="w-full flex base:h-fit lg:h- justify-center mt-10 ">
       <div className="antialiased  relative max-w-[1440px] w-[80%] lg:px-6 py-10 border-gradient border-[1px] ">
-        <div className="absolute base:-left-[180px] base:bottom-10 base:backdrop-blur-[1px] lg:backdrop-blur-[2px]  scale-y-90 scale-x-125 lg:h-fit md:-bottom-[65%] md:-left-[10%] ">
+        <div className="absolute base:-left-[180px] base:bottom-10 brightness-75 scale-y-75 scale-x-125 lg:h-fit md:-bottom-[65%] md:-left-[10%] ">
           <SvgAboutScrolling />
         </div>
 

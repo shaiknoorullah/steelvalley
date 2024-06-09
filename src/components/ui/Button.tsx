@@ -77,11 +77,15 @@ const ButtonVariants = tv({
       signin: "bg-[#0000ff] text-white w-full px-[152px] py-2 z-50",
       addcandidate: "bg-[#0000ff] text-[13px] text-white w-fit px-4 py-2 z-50",
       white:
-        "bg-white rounded-full lg:px-5 lg:py-3 base:px-3 base:py-2 text-black font-semibold border border-black border-[1px]",
+        "bg-[#E9E9E9] rounded-full lg:px-5 lg:py-3 base:px-3 base:py-2 text-[#1B1B1B] font-semibold border border-black border-[1px] text-[max(0.6rem,min(1vw,21px))]",
+      productbtn:
+        "bg-[#E9E9E9] rounded-full lg:px-5 lg:py-3 base:px-3 base:py-2 text-[#1B1B1B] font-semibold border border-black border-[1px] text-[max(0.5rem,min(0.7vw,14px))]",
       black:
-        "bg-transparent rounded-full lg:px-5 lg:py-3 base:px-3 base:py-2 text-white font-semibold border border-white border-[1px]",
+        "bg-transparent rounded-full lg:px-5 lg:py-3 base:px-3 base:py-2 border-[#F2F2F2] font-semibold border text-[#ECECEC] border-[1px] text-[max(0.6rem,min(1vw,21px))]",
       custombutton:
         "border-[1px] border-light-gradient border-opacity-20 dark:bg-light-gradient bg-dark-gradient text-black dark:text-white cursor-pointer hover:bg-light-gradient/25",
+      productSize:
+        "bg-transparent rounded-full lg:px-5 lg:py-3 base:px-3 base:py-2 text-white font-semibold border border-white border-[1px] text-[max(0.6rem,min(0.7vw,14px))]",
     },
     size: {
       signinsize: "w-full py-3 px-[9.5rem]",

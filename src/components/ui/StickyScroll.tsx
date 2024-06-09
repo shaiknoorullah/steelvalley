@@ -3,18 +3,18 @@ import React, { useRef } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import Text from "./Text";
-import { Icon } from "../custom/aboutus/ThreePillars";
 
 export const StickyScroll = ({
   content,
+  title,
+  description,
   contentClassName,
 }: {
-  content: {
-    title: string;
-    description: string;
-    content?: React.ReactNode | any;
-  }[];
+  // content: {
+  title: any;
+  description: string;
+  content?: React.ReactNode | any;
+  // }[];
   contentClassName?: string;
 }) => {
   const [activeCard, setActiveCard] = React.useState(0);
@@ -25,12 +25,14 @@ export const StickyScroll = ({
     container: ref,
     offset: ["start start", "end start"],
   });
-  const cardLength = content.length;
+  const cardLength = title?.length;
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
+    const cardsBreakpoints = content.map(
+      (_: any, index: number) => index / cardLength
+    );
     const closestBreakpointIndex = cardsBreakpoints.reduce(
-      (acc, breakpoint, index) => {
+      (acc: any, breakpoint: any, index: number) => {
         const distance = Math.abs(latest - breakpoint);
         if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
           return index;
@@ -57,10 +59,10 @@ export const StickyScroll = ({
       className="w-full h-[30rem] bg-transparent scrllcomp flex  lg:flex-row-reverse justify-between relative space-x-10 rounded-md "
       ref={ref}
     >
-      <div className="div relative flex   items-start  px-4 ml-14">
-        <div className="lg:max-w-2xl">
-          {content.map((item, index) => (
-            <div key={item.title + index} className="my-20">
+      <div className="div relative flex   items-start  px-4 md:ml-14">
+        <div className="lg:max-w-2xl ">
+          {title?.map((item: any, index: number) => (
+            <div key={item.title + index} className="my-20 ">
               <motion.h2
                 initial={{
                   opacity: 0,
@@ -70,7 +72,7 @@ export const StickyScroll = ({
                 }}
                 className="text-[max(0.7rem,min(1.3vw,28px))] font-bold text-slate-100 text-left"
               >
-                {item.title}
+                {title[index]}
               </motion.h2>
               <motion.p
                 initial={{
@@ -79,9 +81,9 @@ export const StickyScroll = ({
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-[max(0.7rem,min(1.3vw,15px))] text-slate-300 max-w-sm mt-10 text-left"
+                className="text-[max(0.7rem,min(1.3vw,15px))] text-slate-300 mt-10 text-left md:pr-24"
               >
-                {item.description}
+                {description[index]}
               </motion.p>
             </div>
           ))}
@@ -97,7 +99,11 @@ export const StickyScroll = ({
           contentClassName
         )}
       >
-        {content[activeCard].content ?? null}
+        <img
+          // src={content[activeCard]?.url ?? null}
+          alt="img"
+          className="w-full object-cover"
+        />
       </motion.div>
     </motion.div>
   );

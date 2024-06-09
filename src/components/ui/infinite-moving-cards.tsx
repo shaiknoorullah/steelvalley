@@ -5,18 +5,22 @@ import React, { useEffect, useState } from "react";
 import Text from "./Text";
 
 export const InfiniteMovingCards = ({
-  items,
+  // items,
+  text,
+  name,
   direction = "left",
   speed = "fast",
   pauseOnHover = true,
   className,
   bgcolor = true,
 }: {
-  items: {
-    quote: string;
-    name: string;
-    title: string;
-  }[];
+  // items: {
+  //   quote: string;
+  //   name: string;
+  //   title: string;
+  // }[];
+  text: any;
+  name: string;
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
@@ -91,16 +95,16 @@ export const InfiniteMovingCards = ({
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
-        {items.map((item, idx) => (
+        {text?.map((item: string, idx: number) => (
           <li
             className={`w-[350px] max-w-full  relative rounded-3xl  flex-shrink-0  p-5 lg:px-8 lg:py-6 md:w-[450px] ${
-              bgcolor ? "bg-black text-white" : "bg-white text-black"
+              bgcolor ? " text-white" : " text-black"
             }`}
-            // style={{
-            //   background:
-            //     "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
-            // }}
-            key={item.name}
+            style={{
+              background:
+                "linear-gradient(136.22deg, #1A1A1A 12.66%, #050505 129.6%)",
+            }}
+            key={idx}
           >
             <blockquote className="flex flex-col justify-between">
               <div
@@ -108,12 +112,12 @@ export const InfiniteMovingCards = ({
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
               <Text className="z-20 text-marqueetext leading-[1.6] text-[#959595]  font-medium">
-                {item.quote}
+                {text[idx]}
               </Text>
               <div className="relative z-20 mt-6 flex flex-row  items-center">
                 <span className="flex flex-col gap-1">
                   <span className="text-[max(0.5rem,max(0.7vw,12px))] leading-[1.6] text-[#878787] font-normal">
-                    {item.name}
+                    {name[idx]}
                   </span>
                   {/* <span className=" text-sm leading-[1.6] text-gray-400 font-normal">
                     {item.title}

@@ -4,16 +4,16 @@ import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
 export const ImagesMarquee = ({
-  items,
+  logo,
   direction = "left",
   speed = "fast",
   pauseOnHover = true,
   className,
 }: {
-  items: {
-    logo: string;
-    // quote?: string;
-  }[];
+  // items: {
+  logo: any;
+  // quote?: string;
+  // }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
@@ -79,14 +79,14 @@ export const ImagesMarquee = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap overflow-hidden",
+          " flex min-w-full shrink-0 gap-4 py-2 w-max flex-nowrap overflow-hidden",
           start && "animate-scroll ",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
-        {items.map((item, idx) => (
+        {logo?.map((item: any, idx: number) => (
           <li
-            className="w-[300px] max-w-full  text-white relative rounded-2xl  flex-shrink-0  px-8 py-6 md:w-[400px]"
+            className="w-[200px] max-w-full  text-white relative rounded-2xl  flex-shrink-0  px-8 py-6 md:w-[400px]"
             // style={{
             //   background:
             //     "linear-gradient(180deg, var(--slate-800), var(--slate-900)" ,
@@ -98,10 +98,7 @@ export const ImagesMarquee = ({
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
-              <img src={item.logo} className="base:h-[18px] md:h-[25px]" />
-              {/* <span className=" relative z-20 text-sm leading-[1.6] text-white font-semibold">
-                {item.quote}
-              </span> */}
+              <img src={item.url} className="base:h-[20px] md:h-[30px]" />
             </blockquote>
           </li>
         ))}

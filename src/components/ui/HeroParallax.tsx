@@ -7,23 +7,32 @@ import {
   useSpring,
   MotionValue,
 } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import Text from "./Text";
 import { Button } from "./Button";
 
 export const HeroParallax = ({
-  products,
+  // products,
+  heroTitle,
+  title,
+  link,
+  thumbnail,
+  animateon,
 }: {
-  products: {
-    title: string;
-    link: string;
-    thumbnail: string;
-  }[];
+  // products: {
+  heroTitle: string;
+  title: any;
+  link: string;
+  thumbnail: any;
+  animateon: boolean;
+  // }[];
 }) => {
-  const firstRow = products.slice(0, 5);
-  const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
+  const firstRow = title?.slice(0, 5);
+  console.log(firstRow);
+  const secondRow = title?.slice(5, 10);
+  console.log(secondRow);
+  const thirdRow = title?.slice(10, 15);
+  console.log(thirdRow);
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -59,10 +68,10 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="w-screen base:h-[250vh] md:h-[300vh] py-40 max-w-[1920px]  antialiased relative flex flex-col  [perspective:1000px] [transform-style:preserve-3d]"
+      className="w-screen base:h-[250vh] md:h-[300vh] py-16 max-w-[1920px]  antialiased relative flex flex-col  [perspective:1000px] [transform-style:preserve-3d]"
     >
-      <div className="">
-        <Header />
+      <div className="mb-10">
+        <Header heroTitle={heroTitle} animateon={animateon} />
       </div>
 
       <motion.div
@@ -75,29 +84,38 @@ export const HeroParallax = ({
         className=""
       >
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-          {firstRow.map((product) => (
+          {firstRow?.map((product: string, index: number) => (
             <ProductCard
-              product={product}
+              // product={product}
+              title={title[index]}
+              link={link[index]}
+              thumbnail={thumbnail[index]?.url}
               translate={translateX}
-              key={product.title}
+              key={title[index]}
             />
           ))}
         </motion.div>
         <motion.div className="flex flex-row  mb-20 space-x-20 ">
-          {secondRow.map((product) => (
+          {secondRow?.map((product: string, index: number) => (
             <ProductCard
-              product={product}
+              // product={product}
+              title={title[index + 5]}
+              link={link[index + 5]}
+              thumbnail={thumbnail[index + 5]?.url}
               translate={translateXReverse}
-              key={product.title}
+              key={title[index]}
             />
           ))}
         </motion.div>
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-          {thirdRow.map((product) => (
+          {thirdRow?.map((product: string, index: number) => (
             <ProductCard
-              product={product}
-              translate={translateX}
-              key={product.title}
+              // product={product}
+              title={title[index + 10]}
+              link={link[index + 10]}
+              thumbnail={thumbnail[index + 10]?.url}
+              translate={translateXReverse}
+              key={title[index]}
             />
           ))}
         </motion.div>
@@ -106,15 +124,20 @@ export const HeroParallax = ({
   );
 };
 
-export const Header = () => {
+export const Header = ({ heroTitle, animateon }: any) => {
   return (
-    <div className="flex flex-col gap-10  justify-center px-[10%]">
-      <Text variant="heroTitle" className="leading-tight md:w-[21ch]">
-        Market Leaders in <br /> Custom Industrial-Grade <br /> Commercial
-        Kitchen <br /> Equipment
+    <div className="flex flex-col gap-10  justify-center px-[8%]">
+      <Text
+        variant="heroTitle"
+        triggerAnimation={animateon}
+        className="leading-tight md:w-[21ch]"
+      >
+        {/* Market Leaders in <br /> Custom Industrial-Grade <br /> Commercial
+        Kitchen <br /> Equipment */}
+        {heroTitle}
       </Text>
 
-      <div className="flex gap-10 md:mt-10 ">
+      <div className="flex gap-10 md:mt-10">
         <Button variant="white">Get A Custom Quote</Button>
         <Button variant="black">Learn More</Button>
       </div>
@@ -123,14 +146,17 @@ export const Header = () => {
 };
 
 export const ProductCard = ({
-  product,
+  // product,
+  title,
+  link,
+  thumbnail,
   translate,
 }: {
-  product: {
-    title: string;
-    link: string;
-    thumbnail: string;
-  };
+  // product: {
+  title: string;
+  link: string;
+  thumbnail: string;
+  // };
   translate: MotionValue<number>;
 }) => {
   return (
@@ -141,24 +167,21 @@ export const ProductCard = ({
       whileHover={{
         y: -20,
       }}
-      key={product.title}
-      className="group/product base:h-48 lg:h-96 base:w-[90%] lg:w-[30rem] relative flex-shrink-0 grayscale "
+      key={title}
+      className="group/product base:h-48 lg:h-96 base:w-[90%] lg:w-[30rem] relative flex-shrink-0 grayscale brightness-50 "
     >
-      <Link
-        href={product.link}
-        className="block group-hover/product:shadow-2xl"
-      >
-        <Image
-          src={product.thumbnail}
+      <Link href={link} className="block group-hover/product:shadow-2xl">
+        <img
+          src={thumbnail}
           height="600"
           width="800"
           className="object-cover object-left-top absolute h-full w-full inset-0"
-          alt={product.title}
+          alt={title}
         />
       </Link>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
       <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
-        {product.title}
+        {title}
       </h2>
     </motion.div>
   );

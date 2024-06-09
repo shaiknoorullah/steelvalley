@@ -1,6 +1,9 @@
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Text from "@/components/ui/Text";
+// import { SignupForm } from "@/components/ui/SignupForm";
+import { useQuery } from "@tanstack/react-query";
+import { getTableData } from "../../../../utils/getTableData";
 import { SignupForm } from "@/components/ui/SignupForm";
 
 const ContactUs = () => {
@@ -18,28 +21,73 @@ const ContactUs = () => {
       title: "Hamlet",
     },
   ];
+
+  const { isPending, isError, data, isSuccess, error } = useQuery({
+    queryKey: ["airtableContactData"],
+    queryFn: async () => {
+      try {
+        console.log("hello contact");
+        const tableData = await getTableData("tblcyLkr5afueTlXq");
+
+        console.log(tableData);
+        if (!tableData) {
+          return Promise.reject("Could not get the table data from API");
+        }
+        return Promise.resolve(tableData);
+      } catch (error) {
+        throw new Error(
+          `There was an unexpected error while trying to get the table data, ${error}`
+        );
+      }
+    },
+  });
+
   return (
-    <div className="flex w-full justify-center lg:h-screen items-center my-32">
+    <div className="flex w-full justify-center lg:h-screen items-center my-20">
       <div className="w-[80%] max-w-[1920px] flex justify-center items-center ">
         <div className=" lg:flex base:flex-col lg:flex-row  gap-20">
           <div className="flex w-full lg:w-[50%]  flex-col base:gap-9 md:gap-20 lg:gap-32">
             <div className="flex flex-col gap-10 md:w-[65%]">
               <Text variant="shortHeadings">
-                Join Us and let’s make the future of industrial kitchens more
-                stronger and brighter.
+                {data?.data?.records[0]?.fields?.ContactTitle}
               </Text>
               <Text variant="default" className="text-[#ECECEC] font-medium">
-                Experience the seamless transition as our precision-engineered
-                storage solutions meticulously organize your space, facilitating
-                effortless accessibility to every tool and ingredient. Our
-                commitment to durability ensures a lasting foundation,
-                empowering your kitchen to foster unparalleled efficiency and
-                productivity.
+                {data?.data?.records[0]?.fields?.ContactDesc}
               </Text>
             </div>
-            <ContactCrads testimonials={testimonials} />
+            <ContactCrads
+              quote={data?.data?.records[0]?.fields?.TitleContactCard}
+              name={data?.data?.records[0]?.fields?.NameContactCard}
+              title={data?.data?.records[0]?.fields?.DescriptionContactCard}
+
+              // testimonials={data?.data?.records[0]?.fields?.TitleContactCard}
+            />
+            {/* hello */}
+            {/* <div className="flex base:flex-col md:flex-row  gap-5 justify-between">
+              {testimonials?.map((item, index) => (
+                <blockquote
+                  key={index}
+                  className="flex flex-col bg-white justify-between  px-5 base:py-5 md:py-9 rounded-md"
+                >
+                  <Text className="z-20 text-marqueetext leading-[1.6] text-[#2F2F2F]  font-semibold">
+                    {item.quote}
+                  </Text>
+                  <div className="relative z-20 mt-6 flex flex-row items-center">
+                    <span className="flex flex-col gap-1">
+                      <span className="md:text-[12px] base:text-[9px] leading-[1.6] text-gray-400 font-normal">
+                        {item.name}
+                      </span>
+                      <span className="md:text-[12px] base:text-[9px] leading-[1.6] text-gray-400 font-normal">
+                        {item.title}
+                      </span>
+                    </span>
+                  </div>
+                </blockquote>
+              ))}
+            </div> */}
+            {/* hello */}
           </div>
-          <div className="lg:w-[50%] mt-20 lg:mt-0 flex base:justify-center  lg:justify-end ">
+          <div className="lg:w-[50%] mt-20 lg:mt-0 flex base:justify-center lg:justify-end">
             <SignupForm />
           </div>
         </div>
@@ -50,34 +98,24 @@ const ContactUs = () => {
 
 export default ContactUs;
 
-type ContactCardItem = {
-  quote: string;
-  name: string;
-  title: string;
-};
-
-const ContactCrads = ({
-  testimonials,
-}: {
-  testimonials: ContactCardItem[];
-}) => {
+const ContactCrads = ({ quote, name, title }: any) => {
   return (
     <div className="flex base:flex-col md:flex-row  gap-5 justify-between">
-      {testimonials.map((item, index) => (
+      {quote?.map((item: any, index: any) => (
         <blockquote
           key={index}
           className="flex flex-col bg-white justify-between  px-5 base:py-5 md:py-9 rounded-md"
         >
           <Text className="z-20 text-marqueetext leading-[1.6] text-[#2F2F2F]  font-semibold">
-            {item.quote}
+            {quote[index]}
           </Text>
           <div className="relative z-20 mt-6 flex flex-row items-center">
             <span className="flex flex-col gap-1">
               <span className="md:text-[12px] base:text-[9px] leading-[1.6] text-gray-400 font-normal">
-                {item.name}
+                {name[index]}
               </span>
               <span className="md:text-[12px] base:text-[9px] leading-[1.6] text-gray-400 font-normal">
-                {item.title}
+                {title[index]}
               </span>
             </span>
           </div>

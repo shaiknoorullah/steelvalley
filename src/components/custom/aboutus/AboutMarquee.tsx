@@ -1,5 +1,7 @@
 import { ImagesMarquee } from "@/components/ui/ImagesMarquee";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { getTableData } from "../../../../utils/getTableData";
 
 const AboutMarquee = () => {
   const logosAry = [
@@ -19,16 +21,38 @@ const AboutMarquee = () => {
       logo: "/marquee/ipsum.svg",
     },
   ];
+  const { isPending, isError, data, isSuccess, error } = useQuery({
+    queryKey: ["airtablemarquee"],
+    queryFn: async () => {
+      try {
+        console.log("hello contact");
+        const tableData = await getTableData("tblpvbRUZpeG7f9ai");
+        // const tableData = await getTableData("tbllr4eLGe8WBzmnu");
+
+        console.log(tableData);
+        if (!tableData) {
+          return Promise.reject("Could not get the table data from API");
+        }
+        return Promise.resolve(tableData);
+      } catch (error) {
+        throw new Error(
+          `There was an unexpected error while trying to get the table data, ${error}`
+        );
+      }
+    },
+  });
   return (
     <div className="mb-36 max-w-[1920px] w-screen">
       <ImagesMarquee
-        items={logosAry}
+        // items={logosAry}
+        logo={data?.data?.records[0]?.fields?.MarqueeImages}
         direction="right"
         speed="fast"
         className="font-bold"
       />
       <ImagesMarquee
-        items={logosAry}
+        // items={logosAry}
+        logo={data?.data?.records[0]?.fields?.MarqueeImages}
         direction="left"
         speed="fast"
         className="font-bold"

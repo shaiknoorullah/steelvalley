@@ -6,10 +6,29 @@ import HomeMaskComponent from "@/components/custom/home/HomeMaskComponent";
 import TabComponent from "@/components/custom/home/TailoredSolutions";
 import ContactUs from "@/components/custom/aboutus/ContactUs";
 import Navbar from "@/components/custom/layout/Navbar";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useQuery } from "@tanstack/react-query";
+import { getTableData } from "../../utils/getTableData";
 
 export default function Home() {
+  // const { isPending, isError, data, isSuccess, error } = useQuery({
+  //   queryKey: ["airtableData"],
+  //   queryFn: async () => {
+  //     try {
+  //       console.log("hello index page");
+  //       const tableData = await getTableData("tblcyLkr5afueTlXq");
+
+  //       console.log(tableData);
+  //       if (!tableData) {
+  //         return Promise.reject("Could not get the table data from API");
+  //       }
+  //       return Promise.resolve(tableData);
+  //     } catch (error) {
+  //       throw new Error(
+  //         `There was an unexpected error while trying to get the table data, ${error}`
+  //       );
+  //     }
+  //   },
+  // });
   const tabData = [
     [
       {

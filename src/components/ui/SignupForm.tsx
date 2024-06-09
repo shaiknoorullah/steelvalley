@@ -25,7 +25,7 @@ export function SignupForm() {
           "radial-gradient(174.8% 174.8% at 135.3% 155.27%, rgba(0, 0, 0, 0.6) 0%, rgba(83, 83, 83, 0.6) 100%)",
       }}
     >
-      <form className="py-14" onSubmit={handleSubmit}>
+      <form className="py-14 z-50" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="firstname">Full Name</Label>
@@ -43,14 +43,10 @@ export function SignupForm() {
 
         <LabelInputContainer className="mb-4">
           <Label htmlFor="Number">Message</Label>
-          <Input
-            type="text"
-            placeholder=""
-            className="base:h-[100px] md:h-[125px]"
-          />
+          <Input type="textarea" placeholder="" className="" />
         </LabelInputContainer>
         <button
-          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-800 block dark:bg-zinc-800 w-full text-white rounded-sm h-10 font-medium "
+          className="bg-gradient-to-br cursor-pointer relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-800 block dark:bg-zinc-800 w-full text-white rounded-sm h-10 font-medium "
           type="submit"
         >
           Sign up &rarr;
@@ -85,3 +81,68 @@ const LabelInputContainer = ({
     </div>
   );
 };
+
+// "use client";
+
+// import { zodResolver } from "@hookform/resolvers/zod";
+// import { useForm } from "react-hook-form";
+// import { z } from "zod";
+
+// import { Button } from "./Button";
+// import {
+//   Form,
+//   FormControl,
+//   FormDescription,
+//   FormField,
+//   FormItem,
+//   FormLabel,
+//   FormMessage,
+// } from "./Form";
+// import { Input } from "./Input";
+
+// const formSchema = z.object({
+//   username: z.string().min(2, {
+//     message: "Username must be at least 2 characters.",
+//   }),
+// });
+
+// export default function SignupForm() {
+//   const form = useForm<z.infer<typeof formSchema>>({
+//     resolver: zodResolver(formSchema),
+//     defaultValues: {
+//       username: "",
+//     },
+//   });
+
+//   // 2. Define a submit handler.
+//   function onSubmit(values: z.infer<typeof formSchema>) {
+//     // Do something with the form values.
+//     // ✅ This will be type-safe and validated.
+//     console.log(values);
+//   }
+//   // ...
+
+//   return (
+//     <Form {...form}>
+//       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+//         <FormField
+//           control={form.control}
+//           name="username"
+//           render={({ field }) => (
+//             <FormItem>
+//               <FormLabel>Username</FormLabel>
+//               <FormControl>
+//                 <Input placeholder="shadcn" {...field} />
+//               </FormControl>
+//               <FormDescription>
+//                 This is your public display name.
+//               </FormDescription>
+//               <FormMessage />
+//             </FormItem>
+//           )}
+//         />
+//         <Button type="submit">Submit</Button>
+//       </form>
+//     </Form>
+//   );
+// }

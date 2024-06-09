@@ -3,6 +3,8 @@ import React from "react";
 import { StickyScroll } from "@/components/ui/StickyScroll";
 import Image from "next/image";
 import { Icon } from "./ThreePillars";
+import { useQuery } from "@tanstack/react-query";
+import { getTableData } from "../../../../utils/getTableData";
 
 const content = [
   {
@@ -53,13 +55,37 @@ const content = [
   },
 ];
 export function StickyScrollRevealDemo() {
+  const { isPending, isError, data, isSuccess, error } = useQuery({
+    queryKey: ["airtableData"],
+    queryFn: async () => {
+      try {
+        console.log("hello here in the getting ");
+        const tableData = await getTableData("tbllr4eLGe8WBzmnu");
+
+        console.log(tableData);
+        if (!tableData) {
+          return Promise.reject("Could not get the table data from API");
+        }
+        return Promise.resolve(tableData);
+      } catch (error) {
+        throw new Error(
+          `There was an unexpected error while trying to get the table data, ${error}`
+        );
+      }
+    },
+  });
+  console.log("hello", data?.data?.records[0]?.fields?.StickySectionTitle);
   return (
     <div className="base:p-5 lg:p-10 ">
-      <Icon className="absolute h-9 w-9 -top-5 -left-5  z-50 text-white " />
-      <Icon className="absolute h-9 w-6 -bottom-5 -left-5 text-white" />
-      <Icon className="absolute h-9 w-9 -top-5 -right-5 text-white " />
-      <Icon className="absolute h-9 w-9 -bottom-5 -right-5 text-white " />
-      <StickyScroll content={content} />
+      <Icon className="absolute h-9 w-9 -top-[18px] -left-[18px]  z-50 text-white " />
+      <Icon className="absolute h-9 w-9 -bottom-[18px] -left-[18px] text-white" />
+      <Icon className="absolute h-9 w-9 -top-[18px] -right-[18px] text-white " />
+      <Icon className="absolute h-9 w-9 -bottom-[18px] -right-[18px] text-white " />
+      <StickyScroll
+        title={data?.data?.records[0]?.fields?.StickySectionTitle}
+        description={data?.data?.records[0]?.fields?.StickySectionDescription}
+        content={data?.data?.records[0]?.fields?.StickySectionImage}
+      />
     </div>
   );
 }

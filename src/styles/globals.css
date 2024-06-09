@@ -18,12 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #121212;
   font-family: "Silka";
 }
 body::-webkit-scrollbar-track {
@@ -35,7 +30,9 @@ body::-webkit-scrollbar-track {
   /* position: absolute; */
   border: 1px solid;
 
-  border-image: linear-gradient(to right, #2a2a2a, #777, #2a2a2a);
+  border-image: linear-gradient(to left, #2a2a2a, #777, #2a2a2a);
+  /* border-image: linear-gradient(to bottom, #777, #2a2a2a, #777); */
+
   border-image-slice: 1;
 }
 
@@ -102,4 +99,17 @@ body::-webkit-scrollbar-track {
     overflow: hidden;
     margin-right: 5px;
   }
+}
+
+.threePillars {
+  background: linear-gradient(169.26deg, #1c1c1c -33.69%, #0e0e0e 164.56%);
+}
+
+/* loading screen */
+.loading-text span {
+  display: inline-block;
+  font-size: inherit;
+  line-height: 1;
+  text-shadow: 0 0 0 #ececec; /* Initial border effect */
+  transition: text-shadow 0.5s ease, color 0.5s ease;
 }

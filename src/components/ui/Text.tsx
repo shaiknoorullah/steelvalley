@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { gsap } from "gsap";
 
 const TextVariants = tv({
-  base: "font-[Silka]",
+  base: "font-[silka]",
   variants: {
     variant: {
       default: "text-[max(0.7rem,min(1.3vw,14px))] text-[#]",
@@ -20,7 +20,10 @@ const TextVariants = tv({
       heroTitle: "font-normal text-[max(1.2rem,min(4vw,65px))]",
       secondaryTitle: "text-[max(1rem,min(2.1vw,45px))] lg:leading-[50px]",
       shortHeadings: "text-[max(1rem,min(1.3vw,28px))] text-[#ECECEC]",
-      navbarText: "text-[max(1rem,min(1.5rem,24px))] font-semibold",
+      navbarText: "text-[max(1rem,min(1.1rem,24px))] font-semibold",
+      review: "text-[max(0.8rem,min(1vw,19px))] font-[400]",
+      productdesc:
+        "font-[400] text-[max(0.6rem,min(1.1vw,22px))] text-[#777777]",
     },
   },
   defaultVariants: {
@@ -32,19 +35,21 @@ interface TextProps
   extends HTMLAttributes<HTMLParagraphElement>,
     VariantProps<typeof TextVariants> {
   children: React.ReactNode;
+  triggerAnimation?: boolean;
 }
 
 const Text = ({
   children,
   className,
   variant = "default",
+  triggerAnimation = false,
   ...props
 }: TextProps) => {
   const textRef = useRef<HTMLParagraphElement>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (!textRef.current || hasAnimated) return;
+    if (!textRef.current || hasAnimated || !triggerAnimation) return;
 
     const handleIntersect = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
@@ -60,7 +65,7 @@ const Text = ({
               ?.split(" ")
               .map(
                 (char) =>
-                  `<span class="char" style="display:inline-block overflow:hidden">${char}</span>`
+                  `<span class="char" style="display:inline-block ">${char}</span>`
               );
             if (splitText) {
               entry.target.innerHTML = splitText.join(" ");
@@ -68,6 +73,7 @@ const Text = ({
                 entry.target.querySelectorAll(".char"),
                 { opacity: 0, y: 30 },
                 {
+                  delay: 1.4,
                   opacity: 1,
                   y: 0,
                   stagger: 0.1,
@@ -151,13 +157,7 @@ const Text = ({
                   { opacity: 1, ...commonAnimationSettings }
                 ),
               navbarText: () =>
-                gsap.fromTo(
-                  entry.target,
-                  {
-                    scaleX: 1.05,
-                  },
-                  { scaleX: 1 }
-                ),
+                gsap.fromTo(entry.target, { scaleX: 1.05 }, { scaleX: 1 }),
             };
 
             const animate = animations[variant];
@@ -176,42 +176,7 @@ const Text = ({
     observer.observe(textRef.current);
 
     return () => observer.disconnect();
-  }, [variant, hasAnimated]);
-
-  // navbar
-  useEffect(() => {
-    const handleHover = () => {
-      if (variant === "navbarText" && textRef.current) {
-        gsap.to(textRef.current, {
-          rotationY: 360,
-          duration: 0.6,
-          ease: "power3.out",
-        });
-      }
-    };
-
-    const handleHoverOut = () => {
-      if (variant === "navbarText" && textRef.current) {
-        gsap.to(textRef.current, {
-          rotationY: 0,
-          duration: 0.6,
-          ease: "power3.out",
-        });
-      }
-    };
-
-    if (variant === "navbarText" && textRef.current) {
-      textRef.current.addEventListener("mouseover", handleHover);
-      textRef.current.addEventListener("mouseout", handleHoverOut);
-
-      return () => {
-        if (textRef.current) {
-          textRef.current.removeEventListener("mouseover", handleHover);
-          textRef.current.removeEventListener("mouseout", handleHoverOut);
-        }
-      };
-    }
-  }, [variant]);
+  }, [variant, hasAnimated, triggerAnimation]);
 
   return (
     <p
