@@ -811,7 +811,7 @@ const FooterGrid = () => {
       {columnData.map((column, index) => (
         <div key={index} className="">
           {/* Title */}
-          <h4 className="font-bold text-[max(0.8rem,min(0.8vw,18px))]">
+          <h4 className="font-bold text-[max(0.8rem,min(0.8vw,18px))] text-[#ECECEC]">
             {column.title}
           </h4>
           {/* Child elements */}
@@ -829,7 +829,7 @@ const FooterGrid = () => {
       <div className="flex flex-col justify-between ">
         {/* Title */}
         <div className="lg:w-[400px] flex flex-col gap-10">
-          <h4 className="font-bold text-[max(0.8rem,min(0.8vw,18px))]">
+          <h4 className="font-bold text-[max(0.8rem,min(0.8vw,18px))] text-[#ECECEC]">
             Tailored Solution For Every Kitchen Needs: Cooking, Washing, Storage
             and Work Stations.
           </h4>

@@ -79,7 +79,7 @@ const Navbar = () => {
           <Text variant="navbarText">steelvalley</Text>
         </Link>
         <div className="flex items-center gap-5">
-          <Text>AR</Text>
+          <Text className="text-[#ECECEC]">AR</Text>
           <div onClick={handleToggleOverlay} className="cursor-pointer">
             <NavbarSvg />
           </div>
