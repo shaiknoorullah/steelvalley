@@ -74,7 +74,7 @@ const Navbar = () => {
 
   return (
     <div className="w-full flex justify-center items-center fixed top-7 bg-blur z-50 max-w-[1920px]">
-      <div className="w-full md:w-[80%] max-w-[1920px] flex justify-between px-6 mx-auto">
+      <div className="w-full md:w-[70%] max-w-[1920px] flex justify-between px-6 mx-auto">
         <Link href={"/"}>
           <Text variant="navbarText">steelvalley</Text>
         </Link>

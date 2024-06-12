@@ -28,18 +28,31 @@ const HomeMaskComponent = () => {
   });
   console.log(data?.data?.records[0]?.fields?.MaskTitle);
   return (
-    <div className="h-screen overflow-hidden relative ">
+    <div className=" lg:h-screen overflow-hidden relative ">
       {/* <div className="absolute rotate-180">
         <Image alt="gradinet" src={GradientImage} className="z-20" />
       </div> */}
-      <div className="absolute rotate-180 md:flex -z-50 md:top-0 backdrop-brightness-150 opacity-100 brightness-50">
+      <div className="absolute rotate-180  -z-50 md:top-0 backdrop-brightness-150 opacity-100 brightness-50">
         <Image
           alt="gradinet"
           src={GradientImage}
           className="h-[800px] w-screen lg:h-[1050px] md:h-[700px] base:opacity-60 md:opacity-100"
         />
       </div>
-      <div className="max-w-[1920px] z-50">
+      <div className=" base:flex justify-center items-center h-[500px] lg:hidden relative">
+        <img
+          src="/kitchens/kitchendemo.jpg"
+          className="absolute opacity-20 w-[100%] h-[100%] object-cover"
+        />
+        <Text
+          variant="secondaryTitle"
+          className=" text-[#666666] font-bold w-[80%] text-center z-50 "
+          triggerAnimation={isSuccess}
+        >
+          {data?.data?.records[0]?.fields?.MaskTitle}
+        </Text>
+      </div>
+      <div className="max-w-[1920px] base:hidden lg:flex z-50">
         <MaskContainer
           revealText={
             <Text

@@ -108,7 +108,7 @@ const AllProducts = () => {
         className="w-[70%] flex flex-col justify-center items-center gap-20"
         onValueChange={setSelectedTab}
       >
-        <TabsList className="flex base:flex-col md:flex-row">
+        <TabsList className="flex base:flex-row md:flex-row">
           <TabsTrigger value="storage">Storage</TabsTrigger>
           <TabsTrigger value="cooking">Cooking</TabsTrigger>
           <TabsTrigger value="workstations">Work Stations</TabsTrigger>
@@ -116,7 +116,7 @@ const AllProducts = () => {
         </TabsList>
         <TabsContent
           value={selectedTab}
-          className="grid md:grid-cols-3 base:gap-10 md:gap-28"
+          className="grid  md:grid-cols-3 base:gap-10 md:gap-28"
         >
           {productsData.map((product, index) => (
             <SingleProduct

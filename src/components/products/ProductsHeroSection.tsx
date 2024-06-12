@@ -31,24 +31,30 @@ export function ProductsHeroSection() {
   return (
     <div>
       <LoadingScreen state={isPending} />
-      <div className="md:h-screen w-full rounded-md flex md:items-center md:justify-center  antialiased bg-grid-white/[0.02] relative overflow-hidden">
+      <div className="h-screen w-full rounded-md flex md:items-center md:justify-center  antialiased bg-grid-white/[0.02] relative overflow-hidden">
         <Spotlight
-          className="-top-20 left-0 md:left-96 md:-top-20"
+          className="  left-10 md:left-[30%] md:-top-20 base:absolute -top-28 md:flex"
           fill="white"
         />
-        <div className="flex flex-col items-center text-center gap-8  relative z-10 base:w-[100%]  md:w-[80%] pt-32 md:pt-2">
-          <Text variant="heroTitle" triggerAnimation={isSuccess}>
-            {data?.data?.records[0]?.fields?.HeroTitle}
-            {/* <br className="base:hidden lg:flex" /> */}
-            {/* Commercial Kitchen Equipment */}
-          </Text>
-          <Text
-            variant="shortHeadings"
-            className=" font-normal  text-neutral-300 base:text-center base:w-[90%] md:w-[80%]"
-            triggerAnimation={isSuccess}
-          >
-            {data?.data?.records[0]?.fields?.HeroDescription}
-          </Text>
+        <div className="flex flex-col items-center  text-center base:gap-10 md:gap-20  relative z-10 base:w-[100%]  md:w-[80%] pt-48 md:pt-20">
+          <div className="text-center flex flex-col base:gap-5 md:gap-10  items-center">
+            <Text
+              variant="heroTitle"
+              className="leading-none"
+              triggerAnimation={isSuccess}
+            >
+              {data?.data?.records[0]?.fields?.HeroTitle}
+              {/* <br className="base:hidden lg:flex" /> */}
+              {/* Commercial Kitchen Equipment */}
+            </Text>
+            <Text
+              variant="shortHeadings"
+              className=" font-normal  text-neutral-400 base:text-center base:w-[90%] md:w-[80%]"
+              triggerAnimation={isSuccess}
+            >
+              {data?.data?.records[0]?.fields?.HeroDescription}
+            </Text>
+          </div>
           <Button variant="white" className="mt-12">
             Get a Custom Quote
           </Button>

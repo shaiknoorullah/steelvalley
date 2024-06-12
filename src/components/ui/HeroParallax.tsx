@@ -68,9 +68,9 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="w-screen base:h-[250vh] md:h-[300vh] py-16 max-w-[1920px]  antialiased relative flex flex-col  [perspective:1000px] [transform-style:preserve-3d]"
+      className="w-screen base:h-[200vh] md:h-[240vh] lg:h-[300vh]  md:py-16 max-w-[1920px]  antialiased relative flex flex-col  [perspective:1000px] [transform-style:preserve-3d]"
     >
-      <div className="mb-10">
+      <div className="mb-10 pointer-events-none">
         <Header heroTitle={heroTitle} animateon={animateon} />
       </div>
 
@@ -81,7 +81,7 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className=""
+        className="py-80 md:py-1"
       >
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
           {firstRow?.map((product: string, index: number) => (
@@ -130,7 +130,7 @@ export const Header = ({ heroTitle, animateon }: any) => {
       <Text
         variant="heroTitle"
         triggerAnimation={animateon}
-        className="leading-tight md:w-[21ch]"
+        className="leading-none md:w-[21ch] pointer-events-none"
       >
         {/* Market Leaders in <br /> Custom Industrial-Grade <br /> Commercial
         Kitchen <br /> Equipment */}
@@ -139,7 +139,9 @@ export const Header = ({ heroTitle, animateon }: any) => {
 
       <div className="flex gap-10 md:mt-10">
         <Button variant="white">Get A Custom Quote</Button>
-        <Button variant="black">Learn More</Button>
+        <Link href={"#contact"}>
+          <Button variant="black">Learn More</Button>
+        </Link>
       </div>
     </div>
   );
