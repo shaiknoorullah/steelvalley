@@ -8,6 +8,7 @@ import GradientImage from "../../../../public/home/herogradinet.png";
 import { useQuery } from "@tanstack/react-query";
 import { getTableData } from "../../../../utils/getTableData";
 import LoadingScreen from "@/components/ui/LoadingScreen";
+import HeroBgSvg from "@/components/svgs/HeroBg";
 import Link from "next/link";
 
 const HomeHero = () => {
@@ -74,11 +75,12 @@ const HomeHero = () => {
 
       <div className="w-full flex flex-col items-center h-[115vh]  overflow-hidden base:gap-14 md:gap-28 relative">
         <div className="absolute md:flex -z-50 md:top-0 blur-3xl opacity-90">
-          <Image
+          {/* <Image
             alt="gradinet"
             src={GradientImage}
-            className="h-[800px] w-screen md:h-[125vh]  base:opacity-60 md:opacity-100"
-          />
+            className="h-[800px] w-screen lg:h-[1050px] md:h-[700px] base:opacity-60 md:opacity-100"
+          /> */}
+          <HeroBgSvg />
         </div>
         {/* bar */}
         <div className="flex   herobar lg:h-[50px] base:justify-center md:gap-10 items-center rounded-full base:py-2 base:px-5 md:p-4 mt-52 z-20 border-gradient">
