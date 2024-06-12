@@ -116,7 +116,7 @@ const HomeHero = () => {
         {/* title */}
         <div className="md:w-[75%] md:flex flex-col base:hidden ">
           <Text
-            className="items-center leading-none text-center"
+            className="items-center leading-none text-center text-[#ECECEC]"
             variant="heroTitle"
             triggerAnimation={isSuccess}
           >
@@ -124,7 +124,7 @@ const HomeHero = () => {
           </Text>
         </div>
         <Text
-          className="base:flex flex-wrap justify-center md:hidden w-[90%] text-center"
+          className="base:flex flex-wrap justify-center md:hidden w-[90%] text-center text-[#ECECEC]"
           variant="heroTitle"
           triggerAnimation={isSuccess}
         >
