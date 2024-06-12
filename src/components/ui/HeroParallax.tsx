@@ -68,7 +68,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="w-screen base:h-[200vh] md:h-[240vh] lg:h-[300vh]  md:py-16 max-w-[1920px]  antialiased relative flex flex-col  [perspective:1000px] [transform-style:preserve-3d]"
+      className="w-screen base:h-[200vh] md:h-[240vh] lg:h-[300vh]  md:py-[min(3.5vw,64px)] max-w-[1920px]  antialiased relative flex flex-col  [perspective:1000px] [transform-style:preserve-3d]"
     >
       <div className="mb-10 pointer-events-none">
         <Header heroTitle={heroTitle} animateon={animateon} />

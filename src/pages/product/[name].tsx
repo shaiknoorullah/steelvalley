@@ -65,7 +65,7 @@ const SingleProduct: React.FC = () => {
       <LoadingScreen state={loading} />
 
       <div className="w-full flex flex-col items-center overflow-hidden">
-        <div className="max-w-[1920px] flex flex-col gap-20">
+        <div className="max-w-[1920px] flex flex-col gap-24">
           <Navbar />
           <div className="flex justify-center items-center h-screen base:mt-48 md:mt-10">
             <div className="w-[85%] h-fit flex base:flex-col md:flex-row base:gap-10 md:gap-20">
@@ -128,7 +128,7 @@ const SingleProduct: React.FC = () => {
               </div>
             </div>
           </div>
-          <div id="contactinternal">
+          <div id="contactinternal" className="md:mb-20">
             <ContactUs />
           </div>
           <Footer />

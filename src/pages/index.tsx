@@ -91,7 +91,9 @@ export default function Home() {
         {/* <TabComponent tabData={tabData} /> */}
         <ContactUs />
         {/* <div className="flex flex-col gap-6 pt-20 "> */}
-        <Footer />
+        <div className="md:mt-32">
+          <Footer />
+        </div>
         {/* </div> */}
       </div>
     </div>

@@ -45,7 +45,7 @@ const ContactUs = () => {
   return (
     <div
       id="contact"
-      className="flex w-full justify-center lg:h-screen items-cente base:my-40 md:mt-1 md:my-20"
+      className="flex w-full justify-center lg:min-h-full z-[100]  items-cente base:my-[min(20vw,160px)] md:mt-1 md:py-[min(5vw,80px)]"
     >
       <div className="w-[80%] max-w-[1920px] flex justify-center items-center ">
         <div className=" lg:flex base:flex-col lg:flex-row  gap-20">

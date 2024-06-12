@@ -7,7 +7,7 @@ import Text from "@/components/ui/Text";
 
 export function ThreePillars() {
   return (
-    <div className=" base:w-[90%] lg:w-[70%] h- flex flex-col base:gap-20 lg:gap-40">
+    <div className="min-h-[100vh] base:w-[90%] lg:w-[70%] h- flex flex-col base:gap-20 lg:gap-40">
       <Text variant="shortHeadings" className="text-center z-50 mt-10">
         The Three Pillars
         <br /> of Belief

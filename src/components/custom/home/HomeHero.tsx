@@ -70,10 +70,10 @@ const HomeHero = () => {
   //   return  <div className="w-full flex flex-col items-center md:min-h-screen h-screen overflow-hidden base:gap-14 md:gap-20 relative">Steelvalley</div>;
   // }
   return (
-    <div>
+    <div className="">
       <LoadingScreen state={isPending} />
 
-      <div className="w-full flex flex-col items-center h-[115vh]  overflow-hidden base:gap-14 md:gap-28 relative">
+      <div className="w-full flex flex-col items-center min-h-[100vh] h-[115vh]   overflow-hidden base:gap-14 md:gap-[min(5vw,112px)] relative">
         <div className="absolute md:flex -z-50 md:top-0 blur-3xl opacity-90">
           {/* <Image
             alt="gradinet"
@@ -83,7 +83,7 @@ const HomeHero = () => {
           <HeroBgSvg />
         </div>
         {/* bar */}
-        <div className="flex   herobar lg:h-[50px] base:justify-center md:gap-10 items-center rounded-full base:py-2 base:px-5 md:p-4 mt-52 z-20 border-gradient">
+        <div className="flex   herobar lg:h-[50px] base:justify-center md:gap-10 items-center rounded-full base:py-2 base:px-5 md:p-4 base:mt-[min(65vw,208px)] lg:mt-[min(15vw,200px)] z-20 border-gradient">
           <FlashSvg />
           <div className="flex base:flex-col md:flex-row md:gap-14 base:gap-2 ml-2">
             <Text variant="barText">
@@ -139,7 +139,7 @@ const HomeHero = () => {
             <Button variant="black">Learn More</Button>
           </Link>
         </div>
-        <div className="absolute base:-bottom-2 md:-bottom-5 max-w-[1920px] w-screen">
+        <div className="absolute base:-bottom-3 md:-bottom-5 max-w-[1920px] w-screen">
           <InfiniteMovingCards
             // items={testimonials}
             text={data?.data?.records[0]?.fields?.MovingCardText}

@@ -12,7 +12,7 @@ import Navbar from "@/components/custom/layout/Navbar";
 const Products = () => {
   return (
     <div className="w-full flex justify-center items-center ">
-      <div className="max-w-[1920px] overflow-hidden flex flex-col md:gap-20">
+      <div className="max-w-[1920px] overflow-hidden flex flex-col md:gap-24">
         <Navbar />
         <ProductsHeroSection />
         <AboutMarquee />
