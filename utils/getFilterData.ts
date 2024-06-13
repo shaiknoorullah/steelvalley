@@ -7,7 +7,6 @@ export const getFilterData = async (tableId: string, name: string) => {
 
   const endpoint = airtableGetTableApi(baseId, tableId);
   
-  console.log("Endpointoffilter:", endpoint);
 
   const config = {
     headers: axiosAirtableHeaders,
@@ -23,7 +22,6 @@ export const getFilterData = async (tableId: string, name: string) => {
       throw new Error("could not get the Data");
     }
 
-    console.log(response);
 
     return response;
   } catch (error) {

@@ -12,10 +12,8 @@ export function ProductsHeroSection() {
     queryKey: ["airtableData"],
     queryFn: async () => {
       try {
-        console.log("hello index page");
         const tableData = await getTableData("tblpvbRUZpeG7f9ai");
 
-        console.log(tableData);
         if (!tableData) {
           return Promise.reject("Could not get the table data from API");
         }
@@ -27,7 +25,7 @@ export function ProductsHeroSection() {
       }
     },
   });
-  console.log(data?.data?.records[0]?.fields?.HeroTitle);
+  // console.log(data?.data?.records[0]?.fields?.HeroTitle);
   return (
     <div>
       <LoadingScreen state={isPending} />

@@ -26,10 +26,8 @@ const ContactUs = () => {
     queryKey: ["airtableContactData"],
     queryFn: async () => {
       try {
-        console.log("hello contact");
         const tableData = await getTableData("tblcyLkr5afueTlXq");
 
-        console.log(tableData);
         if (!tableData) {
           return Promise.reject("Could not get the table data from API");
         }

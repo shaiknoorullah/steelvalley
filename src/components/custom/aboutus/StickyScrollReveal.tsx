@@ -59,10 +59,8 @@ export function StickyScrollRevealDemo() {
     queryKey: ["airtableData"],
     queryFn: async () => {
       try {
-        console.log("hello here in the getting ");
         const tableData = await getTableData("tbllr4eLGe8WBzmnu");
 
-        console.log(tableData);
         if (!tableData) {
           return Promise.reject("Could not get the table data from API");
         }
@@ -74,7 +72,6 @@ export function StickyScrollRevealDemo() {
       }
     },
   });
-  console.log("hello", data?.data?.records[0]?.fields?.StickySectionTitle);
   return (
     <div className="base:p-5 lg:p-10 ">
       <Icon className="absolute h-9 w-9 -top-[18px] -left-[18px]  z-50 text-white " />

@@ -49,10 +49,8 @@ const HomeHero = () => {
     queryKey: ["airtableData"],
     queryFn: async () => {
       try {
-        console.log("hello index page");
         const tableData = await getTableData("tblcyLkr5afueTlXq");
 
-        console.log(tableData);
         if (!tableData) {
           return Promise.reject("Could not get the table data from API");
         }
@@ -64,7 +62,7 @@ const HomeHero = () => {
       }
     },
   });
-  console.log(data?.data?.records[0]?.fields?.HeroTitle);
+  // console.log(data?.data?.records[0]?.fields?.HeroTitle);
 
   // if (isPending) {
   //   return  <div className="w-full flex flex-col items-center md:min-h-screen h-screen overflow-hidden base:gap-14 md:gap-20 relative">Steelvalley</div>;

@@ -25,11 +25,9 @@ const AboutMarquee = () => {
     queryKey: ["airtablemarquee"],
     queryFn: async () => {
       try {
-        console.log("hello contact");
         const tableData = await getTableData("tblpvbRUZpeG7f9ai");
         // const tableData = await getTableData("tbllr4eLGe8WBzmnu");
 
-        console.log(tableData);
         if (!tableData) {
           return Promise.reject("Could not get the table data from API");
         }

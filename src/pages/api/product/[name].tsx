@@ -21,8 +21,6 @@ export default async function handler(
       },
     };
 
-    console.log("here product 333");
-
     const response = await axios.get(AIRTABLE_API_ENDPOINT, config);
 
     res.status(200).json(response.data);

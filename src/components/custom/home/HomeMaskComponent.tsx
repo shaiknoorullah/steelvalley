@@ -11,10 +11,8 @@ const HomeMaskComponent = () => {
     queryKey: ["airtableData"],
     queryFn: async () => {
       try {
-        console.log("hello index page");
         const tableData = await getTableData("tblcyLkr5afueTlXq");
 
-        console.log(tableData);
         if (!tableData) {
           return Promise.reject("Could not get the table data from API");
         }
@@ -26,7 +24,6 @@ const HomeMaskComponent = () => {
       }
     },
   });
-  console.log(data?.data?.records[0]?.fields?.MaskTitle);
   return (
     <div className=" lg:h-screen overflow-hidden relative ">
       {/* <div className="absolute rotate-180">

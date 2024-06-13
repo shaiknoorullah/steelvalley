@@ -10,10 +10,8 @@ export function AboutHeroParallax() {
     queryKey: ["airtableData"],
     queryFn: async () => {
       try {
-        console.log("hello here in the getting ");
         const tableData = await getTableData("tbllr4eLGe8WBzmnu");
 
-        console.log(tableData);
         if (!tableData) {
           return Promise.reject("Could not get the table data from API");
         }
@@ -25,7 +23,6 @@ export function AboutHeroParallax() {
       }
     },
   });
-  console.log("hello", data?.data?.records[0]?.fields?.StickySectionTitle);
   return (
     <div>
       <LoadingScreen state={isPending} />
