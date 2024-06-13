@@ -20,7 +20,7 @@ export function SignupForm() {
       style={{
         background:
           "linear-gradient(157.27deg, rgba(65, 65, 65, 0.3) -39.05%, rgba(36, 36, 36, 0) 135.1%)",
-        border: "",
+        border: "1px",
         borderColor:
           "radial-gradient(174.8% 174.8% at 135.3% 155.27%, rgba(0, 0, 0, 0.6) 0%, rgba(83, 83, 83, 0.6) 100%)",
       }}

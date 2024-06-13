@@ -113,3 +113,21 @@ body::-webkit-scrollbar-track {
   text-shadow: 0 0 0 #ececec; /* Initial border effect */
   transition: text-shadow 0.5s ease, color 0.5s ease;
 }
+
+/* loader */
+.loader {
+  animation: fillLoader 2s linear infinite;
+}
+
+@keyframes fillLoader {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.glass-background {
+  background: rgba(40, 30, 40, 0.5); /* Dark semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+}

@@ -88,7 +88,7 @@ export default function Home() {
         <Navbar />
         <HomeHero />
         <HomeMaskComponent />
-        {/* <TabComponent tabData={tabData} /> */}
+        <TabComponent tabData={tabData} />
         <ContactUs />
         {/* <div className="flex flex-col gap-6 pt-20 "> */}
         <div className="md:mt-32">
