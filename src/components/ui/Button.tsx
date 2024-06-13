@@ -18,11 +18,11 @@ const ButtonVariants = tv({
       signin: "bg-[#0000ff] text-white w-full px-[152px] py-2 z-50",
       addcandidate: "bg-[#0000ff] text-[13px] text-white w-fit px-4 py-2 z-50",
       white:
-        "bg-[#E9E9E9] rounded-full px-4 py-2 text-[#1B1B1B] font-semibold text-[max(0.6rem,min(1vw,15px))]",
+        "bg-[#E9E9E9] rounded-full px-4 py-3 text-[#1B1B1B] font-semibold text-[max(0.6rem,min(1vw,15px))]",
       productbtn:
         "bg-[#E9E9E9] rounded-full lg:px-5 lg:py-3 base:px-3 base:py-2 text-[#1B1B1B] font-semibold border border-black border-[1px] text-[max(0.5rem,min(0.7vw,14px))]",
       black:
-        "bg-transparent rounded-full px-4 py-2 border-[#F2F2F2] font-semibold  text-[#ECECEC] border-[1px] text-[max(0.6rem,min(1vw,15px))]",
+        "bg-transparent rounded-full px-4 py-3 border-[#F2F2F2] font-semibold  text-[#ECECEC] border-[1px] text-[max(0.6rem,min(1vw,15px))]",
       custombutton:
         "border-[1px] border-light-gradient border-opacity-20 dark:bg-light-gradient bg-dark-gradient text-black dark:text-white cursor-pointer hover:bg-light-gradient/25",
       productSize:
@@ -56,7 +56,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
       const handleHover = () => {
         gsap.to(buttonRef.current, {
-          scale: 1.05,
+          scale: 1.02,
           duration: 0.3,
           ease: "power3.out",
         });

@@ -1,7 +1,7 @@
 import Text from "@/components/ui/Text";
 import { MaskContainer } from "@/components/ui/svg-mask-effect";
 import React from "react";
-import GradientImage from "../../../../public/home/herogradinet.png";
+import GradientImage from "../../../../public/home/homegradiant.png";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import { getTableData } from "../../../../utils/getTableData";
@@ -29,7 +29,7 @@ const HomeMaskComponent = () => {
       {/* <div className="absolute rotate-180">
         <Image alt="gradinet" src={GradientImage} className="z-20" />
       </div> */}
-      <div className="absolute rotate-180  -z-50 md:top-0 backdrop-brightness-150 opacity-100 brightness-50">
+      <div className="absolute rotate-180  z-[100000] pointer-events-none md:top-0 backdrop-brightness-150 opacity-40 brightness-50">
         <Image
           alt="gradinet"
           src={GradientImage}

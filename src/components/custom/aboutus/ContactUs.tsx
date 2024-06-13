@@ -112,10 +112,10 @@ const ContactCrads = ({ quote, name, title }: any) => {
           </Text>
           <div className="relative z-20 mt-6 flex flex-row items-center">
             <span className="flex flex-col gap-1">
-              <span className="md:text-[12px] base:text-[9px] leading-[1.6] text-gray-400 font-normal">
+              <span className="md:text-[12px] base:text-[9px] leading-[1.6] text-[#464646] font-normal">
                 {name[index]}
               </span>
-              <span className="md:text-[12px] base:text-[9px] leading-[1.6] text-gray-400 font-normal">
+              <span className="md:text-[12px] base:text-[9px] leading-[1.6] text-[#464646] font-normal">
                 {title[index]}
               </span>
             </span>

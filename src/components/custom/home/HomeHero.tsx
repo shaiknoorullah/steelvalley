@@ -71,73 +71,77 @@ const HomeHero = () => {
     <div className="">
       <LoadingScreen state={isPending} />
 
-      <div className="w-full flex flex-col items-center min-h-[100vh]    overflow-hidden base:gap-14 md:gap-[min(5vw,112px)] relative">
-        <div className="absolute md:flex -z-50 md:top-0 blur-3xl opacity-90">
-          {/* <Image
+      <div className="w-full flex flex-col items-center min-h-[100vh] overflow-hidden gap-7 relative justify-between">
+        <div className="flex flex-col items-center base:gap-14 md:gap-[min(5vw,112px)]">
+          <div className="absolute md:flex -z-50 md:top-0 blur-3xl opacity-90">
+            {/* <Image
             alt="gradinet"
             src={GradientImage}
             className="h-[800px] w-screen lg:h-[1050px] md:h-[700px] base:opacity-60 md:opacity-100"
           /> */}
-          <HeroBgSvg />
-        </div>
-        {/* bar */}
-        <div className="flex   herobar lg:h-[50px] base:justify-center md:gap-10 items-center rounded-full base:py-2 base:px-5 md:p-4 base:mt-[min(65vw,208px)] lg:mt-[min(15vw,200px)] z-20 border-gradient">
-          <FlashSvg />
-          <div className="flex base:flex-col md:flex-row md:gap-14 base:gap-2 ml-2">
-            <Text variant="barText">
-              We've successfully completed 100 projects
-            </Text>
+            <HeroBgSvg />
+          </div>
+          {/* bar */}
+          <div className="flex   herobar w-[90%] lg:w-fit base:justify-center md:gap-10 items-center rounded-full base:py-2 md:p-4 base:mt-[min(65vw,208px)] lg:mt-[min(15vw,200px)] z-20 border-gradient">
+            <FlashSvg />
+            <div className="flex flex-row md:gap-14 base:gap-2 ml-2 items-center">
+              <Text variant="barText">
+                We've successfully completed 100 projects
+              </Text>
+              <Text
+                variant="barText"
+                className="flex text-white items-center gap-4"
+              >
+                Read full casestudy
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="15"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                </span>
+              </Text>
+            </div>
+          </div>
+          {/* title */}
+          <div className="md:w-[75%] md:flex flex-col base:hidden ">
             <Text
-              variant="barText"
-              className="flex text-white items-center gap-4"
+              className="items-center leading-none text-center text-[#ECECEC]"
+              variant="heroTitle"
+              triggerAnimation={isSuccess}
             >
-              Read full casestudy
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="15"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
-                </svg>
-              </span>
+              {data?.data?.records[0]?.fields?.HeroTitle}
             </Text>
           </div>
-        </div>
-        {/* title */}
-        <div className="md:w-[75%] md:flex flex-col base:hidden ">
           <Text
-            className="items-center leading-none text-center text-[#ECECEC]"
+            className="base:flex flex-wrap justify-center md:hidden w-[90%] text-center text-[#ECECEC]"
             variant="heroTitle"
             triggerAnimation={isSuccess}
           >
+            {/* Market Leaders in Custom Industrial-Grade Commercial Kitchen Equipment */}
             {data?.data?.records[0]?.fields?.HeroTitle}
           </Text>
+          <div className="flex gap-4 lg:gap-10 z-10">
+            <Link href={"#contact"}>
+              <Button variant="white" className="">
+                Get A Custom Quote
+              </Button>
+            </Link>
+            <Link href={"#contact"}>
+              <Button variant="black">Learn More</Button>
+            </Link>
+          </div>
         </div>
-        <Text
-          className="base:flex flex-wrap justify-center md:hidden w-[90%] text-center text-[#ECECEC]"
-          variant="heroTitle"
-          triggerAnimation={isSuccess}
-        >
-          {/* Market Leaders in Custom Industrial-Grade Commercial Kitchen Equipment */}
-          {data?.data?.records[0]?.fields?.HeroTitle}
-        </Text>
-        <div className="flex gap-10 z-10">
-          <Button variant="white" className="">
-            Get A Custom Quote
-          </Button>
-          <Link href={"#contact"}>
-            <Button variant="black">Learn More</Button>
-          </Link>
-        </div>
-        <div className="absolute base:-bottom-3 md:-bottom-5 max-w-[1920px] w-screen">
+        <div className="mb-[-1rem] max-w-[1920px] w-screen pt-14">
           <InfiniteMovingCards
             // items={testimonials}
             text={data?.data?.records[0]?.fields?.MovingCardText}

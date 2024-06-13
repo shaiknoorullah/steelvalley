@@ -134,7 +134,7 @@ export const Header = ({ heroTitle, animateon }: any) => {
         {heroTitle}
       </Text>
 
-      <div className="flex gap-10 md:mt-10">
+      <div className="flex gap-10 md:mt-10 pointer-events-auto">
         <Button variant="white">Get A Custom Quote</Button>
         <Link href={"#contact"}>
           <Button variant="black">Learn More</Button>

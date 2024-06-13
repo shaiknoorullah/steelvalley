@@ -35,7 +35,7 @@ export function SignupForm() {
 
   return (
     <div
-      className="max-w-[480px] w-full rounded-md p-3 md:p-6 lg:p-8 shadow-input border-[1px] border-gray-900"
+      className="max-w-[480px] w-full rounded-md p-3 md:p-6 lg:p-8 shadow-input border-[1px] border-gray-900 flex justify-center items-center h-fit "
       style={{
         background:
           "linear-gradient(157.27deg, rgba(65, 65, 65, 0.3) -39.05%, rgba(36, 36, 36, 0) 135.1%)",
@@ -45,7 +45,7 @@ export function SignupForm() {
       }}
     >
       <form
-        className="py-5 px-5 flex flex-col gap-1 z-50"
+        className="flex flex-col gap-1 z-50 w-full py-3 lg:py-9"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">

@@ -57,7 +57,7 @@ const TabComponent: React.FC<Props> = ({ tabData }) => {
 
   return (
     <div className="flex items-center justify-center h-screen w-screen my-10">
-      <div className="w-full h-screen flex flex-col justify-center items-center">
+      <div className="w-full h-screen flex flex-col justify-center items-center ">
         <div className="max-w-[1440px] base:w-[90%] md:w-[90%] flex flex-col gap-10 justify-center border-gradient relative h-fit base:py-8 base:px-5 md:py-8 md:px-10 glass-background">
           <Icon className="absolute h-9 w-9 -top-[18px] -left-[18px] z-50 text-white" />
           <Icon className="absolute h-9 w-9 -bottom-[19px] -left-[18px] z-50 text-white" />
@@ -72,7 +72,7 @@ const TabComponent: React.FC<Props> = ({ tabData }) => {
           </div>
 
           <div className="flex base:flex-col md:flex-row gap-10 md:justify-between w-full items-center py-5 z-[10000000000]">
-            <Text variant="heading" className="md:w-[40ch] font-normal">
+            <Text variant="heading" className="md:w-[40ch] font-normal text-[#ECECEC]">
               Tailored Solution For Every Kitchen Needs: Cooking, Washing,
               Storage and Work Stations.
             </Text>

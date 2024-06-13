@@ -113,7 +113,7 @@ const SingleProduct: React.FC = () => {
                     {[1, 2, 3, 4].map((_, index) => (
                       <div
                         key={index}
-                        className="bg-transparent rounded-full lg:px-5 lg:py-3 base:px-3 base:py-2 text-white font-semibold  border-white border-[] text-[max(0.6rem,min(0.7vw,14px))]"
+                        className="bg-transparent rounded-full lg:px-5 lg:py-3 base:px-3 base:py-2 text-white font-semibold  border-[#ECECEC] border text-[max(0.6rem,min(0.7vw,14px))]"
                       >
                         Learn More
                       </div>
