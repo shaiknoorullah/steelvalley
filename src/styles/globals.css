@@ -116,7 +116,7 @@ body::-webkit-scrollbar-track {
 
 /* loader */
 .loader {
-  animation: fillLoader 2s linear infinite;
+  animation: fillLoader 10s linear infinite;
 }
 
 @keyframes fillLoader {
@@ -130,4 +130,35 @@ body::-webkit-scrollbar-track {
 .glass-background {
   background: rgba(40, 30, 40, 0.5); /* Dark semi-transparent background */
   backdrop-filter: blur(10px); /* Apply blur effect */
+}
+
+.input-with-gradient-border {
+  border: 1px solid; /* Set the border width */
+  border-image: linear-gradient(
+    115.67deg,
+    #ececec26 -114.65%,
+    #00000000 260.1%
+  );
+  border-image-slice: 1; /* Ensure the gradient covers the whole border */
+  border-radius: 4px; /* Set the border radius */
+  padding: 10px; /* Adjust padding as needed */
+  background: transparent; /* Ensure background does not interfere with the border */
+  outline: none; /* Remove default outline */
+  background: linear-gradient(
+    127.43deg,
+    rgba(174, 174, 174, 0.1) -232.1%,
+    rgba(27, 27, 27, 0) 256.74%
+  );
+}
+
+.input-with-gradient-border:focus {
+  border-color: #ececec26; /* Optional: Change border color on focus */
+}
+
+.formbutton {
+  background: linear-gradient(
+    127.43deg,
+    rgba(174, 174, 174, 0.1) -232.1%,
+    rgba(27, 27, 27, 0) 256.74%
+  );
 }

@@ -27,7 +27,7 @@ const TabComponent: React.FC<Props> = ({ tabData }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % flattenedData.length);
-    }, 2000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [flattenedData.length]);

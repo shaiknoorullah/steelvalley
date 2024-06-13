@@ -49,8 +49,8 @@ const ContactUs = () => {
     >
       <div className="w-[80%] max-w-[1920px] flex justify-center items-center ">
         <div className=" lg:flex base:flex-col lg:flex-row  gap-20">
-          <div className="flex w-full lg:w-[50%]  flex-col base:gap-9 md:gap-20 lg:gap-32">
-            <div className="flex flex-col gap-10 md:w-[65%]">
+          <div className="flex w-full lg:w-[50%]  flex-col base:gap-9 md:gap-20 lg:gap-">
+            <div className="flex flex-col gap-10 md:w-[75%]">
               <Text variant="shortHeadings">
                 {data?.data?.records[0]?.fields?.ContactTitle}
               </Text>
@@ -107,7 +107,7 @@ const ContactCrads = ({ quote, name, title }: any) => {
       {quote?.map((item: any, index: any) => (
         <blockquote
           key={index}
-          className="flex flex-col bg-white justify-between  px-5 base:py-5 md:py-9 rounded-md"
+          className="flex flex-col bg-[#ECECEC] justify-between  px-5 base:py-5 md:py-9 rounded-md"
         >
           <Text className="z-20 text-marqueetext leading-[1.6] text-[#2F2F2F]  font-semibold">
             {quote[index]}

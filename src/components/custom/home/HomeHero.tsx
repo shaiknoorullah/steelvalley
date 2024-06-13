@@ -73,7 +73,7 @@ const HomeHero = () => {
     <div className="">
       <LoadingScreen state={isPending} />
 
-      <div className="w-full flex flex-col items-center min-h-[100vh] h-[115vh]   overflow-hidden base:gap-14 md:gap-[min(5vw,112px)] relative">
+      <div className="w-full flex flex-col items-center min-h-[100vh]    overflow-hidden base:gap-14 md:gap-[min(5vw,112px)] relative">
         <div className="absolute md:flex -z-50 md:top-0 blur-3xl opacity-90">
           {/* <Image
             alt="gradinet"
