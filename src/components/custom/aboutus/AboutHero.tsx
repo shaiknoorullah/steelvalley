@@ -4,6 +4,7 @@ import { HeroParallax } from "@/components/ui/HeroParallax";
 import { useQuery } from "@tanstack/react-query";
 import { getTableData } from "../../../../utils/getTableData";
 import LoadingScreen from "@/components/ui/LoadingScreen";
+import Text from "@/components/ui/Text";
 
 export function AboutHeroParallax() {
   const { isPending, isError, data, isSuccess, error } = useQuery({
@@ -26,16 +27,29 @@ export function AboutHeroParallax() {
   return (
     <div>
       <LoadingScreen state={isPending} />
-      <div className="mt-52">
+      <div className="mt-52 flex flex-col min-">
         <HeroParallax
           animateon={isSuccess}
           heroTitle={data?.data?.records[0]?.fields?.AboutHero}
           title={data?.data?.records[0]?.fields?.AboutCardTitle}
           link={data?.data?.records[0]?.fields?.AboutCardLink}
           thumbnail={data?.data?.records[0]?.fields?.AboutCardThumbnail}
-
-          // products={products}
         />
+        <div className="flex justify-center items-center ">
+          <Text
+            variant="secondaryTitle"
+            className="w-[85%] base:pt-96 mt-52 mi  text-[#777777]"
+          >
+            <span className="text-primary">Market Leaders </span> in Custom
+            Industrial-Grade Commercial Kitchen Equipment Market Leaders in
+            Equipment Market Leaders in{" "}
+            <span className="text-primary">Custom Industrial-Grade</span>{" "}
+            Commercial Kitchen Equipment Market Leaders in Custom
+            Industrial-Grade{" "}
+            <span className="text-primary">Commercial Kitchen Equipment</span>
+            Commercial Kitchen Equipment
+          </Text>
+        </div>
       </div>
     </div>
   );

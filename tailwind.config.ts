@@ -53,7 +53,9 @@ module.exports = {
         shortHeading:"text-[max(1rem,min(2vw,28px))]",
       },
       colors:{
+        primary:"#EAEAEA",
 description:"#B6B6B6"
+
       },
       
       backgroundImage: {
