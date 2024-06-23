@@ -378,22 +378,20 @@ const FooterGrid = () => {
         { text: "Products", href: "/products" },
       ],
     },
-    {
-      title: "Enquire",
-      children: [
-        { text: "Methodology", href: "/methodology" },
-        { text: "What We Do?", href: "/what-we-do" },
-        { text: "How We Work?", href: "/how-we-work" },
-        { text: "Get In Touch", href: "/get-in-touch" },
-      ],
-    },
+    // {
+    //   title: "Enquire",
+    //   children: [
+    //     { text: "Methodology", href: "/methodology" },
+    //     { text: "What We Do?", href: "/what-we-do" },
+    //     { text: "How We Work?", href: "/how-we-work" },
+    //     { text: "Get In Touch", href: "/get-in-touch" },
+    //   ],
+    // },
     {
       title: "Leap",
       children: [
-        { text: "Methodology", href: "/methodology" },
-        { text: "What We Do?", href: "/what-we-do" },
-        { text: "How We Work?", href: "/how-we-work" },
-        { text: "Get In Touch", href: "/get-in-touch" },
+        { text: "Privacy Policy", href: "/privacypolicy" },
+        { text: "Terms And Service", href: "/termsofservice" }
       ],
     },
   ];
