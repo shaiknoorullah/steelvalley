@@ -40,7 +40,7 @@ const AboutMarquee = () => {
     },
   });
   return (
-    <div className="mb-36 max-w-[1920px] w-screen">
+    <div className="my-36 max-w-[1920px] w-screen ">
       <ImagesMarquee
         // items={logosAry}
         logo={data?.data?.records[0]?.fields?.MarqueeImages}
