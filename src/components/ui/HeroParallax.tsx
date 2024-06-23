@@ -65,7 +65,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="w-screen base:h-[200vh] md:h-[240vh] lg:h-[300vh]  md:py-[min(3.5vw,64px)] max-w-[1920px]  antialiased relative flex flex-col  [perspective:1000px] [transform-style:preserve-3d]"
+      className="w-screen base:h-[150vh] md:h-[240vh] lg:h-[300vh]  md:py-[min(3.5vw,64px)] max-w-[1920px]  antialiased relative flex flex-col  [perspective:1000px] [transform-style:preserve-3d]"
     >
       <div className="mb-10 pointer-events-none">
         <Header heroTitle={heroTitle} animateon={animateon} />
@@ -127,14 +127,14 @@ export const Header = ({ heroTitle, animateon }: any) => {
       <Text
         variant="heroTitle"
         triggerAnimation={animateon}
-        className="leading-none md:w-[21ch] pointer-events-none"
+        className="base:leading-[24px] lg:leading-none md:w-[21ch] pointer-events-none"
       >
         {/* Market Leaders in <br /> Custom Industrial-Grade <br /> Commercial
         Kitchen <br /> Equipment */}
         {heroTitle}
       </Text>
 
-      <div className="flex gap-10 md:mt-10 pointer-events-auto">
+      <div className="flex base:gap-5 lg:gap-10 md:mt-10 pointer-events-auto">
         <Button variant="white">Get A Custom Quote</Button>
         <Link href={"#contact"}>
           <Button variant="black">Learn More</Button>

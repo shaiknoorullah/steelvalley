@@ -10,7 +10,7 @@ const Privacypolicy = () => {
       <Navbar />
       <div className="w-full flex flex-col items-center  overflow-hidden py-[8rem]">
         <div className="w-[90%]">
-          <Text variant="secondaryTitle">Privacy Policy</Text>
+          <Text variant="secondaryTitle">Terms Of Service</Text>
           <Text className="flex flex-col gap-6 text-[#9A9A9A] py-4 text-[1.1rem]">
             But I must explain to you how all this mistaken idea of denouncing
             pleasure and praising pain was born and I will give you a complete

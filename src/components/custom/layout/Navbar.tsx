@@ -69,7 +69,7 @@ const Navbar = () => {
     { text: "Home", href: "/" },
     { text: "About Us", href: "/aboutus" },
     { text: "Products", href: "/products" },
-    { text: "Contact Us", href: "/#contactus" },
+    { text: "Contact Us", href: "/#contact" },
   ];
 
   return (

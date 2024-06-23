@@ -10,7 +10,7 @@ const TextVariants = tv({
       default: "text-[max(0.7rem,min(1.3vw,14px))] text-[#]",
       marqueetext: "text-[max(0.7rem,min(0.6vw,12px))]",
       marqueedesc: "text-[max(0.7rem,min(1vw,15px))]",
-      barText: "text-[0.45rem] lg:text-[max(0.5rem,min(1vw,15px))] text-[#ADADAD]",
+      barText: "text-[0.45rem] lg:text-[max(0.4rem,min(0.8vw,15px))] text-[#ADADAD]",
       heading:
         "font-bold tracking-wide text-[max(0.95rem,min(1.2vw,22px))] text-[SFPro]",
       description: "text-md",

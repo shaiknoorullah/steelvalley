@@ -58,7 +58,7 @@ const AllProducts = () => {
             className="w-[70%] flex flex-col justify-center items-center gap-20"
             onValueChange={setSelectedTab}
           >
-            <TabsList className="flex base:flex-col md:flex-row">
+            <TabsList className="flex base:w-[120%] lg:w-full base:flex-row md:flex-row justify-between">
               <TabsTrigger value="storage">Storage</TabsTrigger>
               <TabsTrigger value="cooking">Cooking</TabsTrigger>
               <TabsTrigger value="workstations">Work Stations</TabsTrigger>
@@ -108,7 +108,7 @@ const AllProducts = () => {
         className="w-[70%] flex flex-col justify-center items-center gap-20"
         onValueChange={setSelectedTab}
       >
-        <TabsList className="flex base:flex-row md:flex-row">
+        <TabsList className="flex base:w-[120%] lg:w-full base:flex-row md:flex-row justify-between">
           <TabsTrigger value="storage">Storage</TabsTrigger>
           <TabsTrigger value="cooking">Cooking</TabsTrigger>
           <TabsTrigger value="workstations">Work Stations</TabsTrigger>

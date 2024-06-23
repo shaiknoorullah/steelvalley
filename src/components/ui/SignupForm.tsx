@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { cn } from "@/lib/utils";
@@ -15,6 +15,9 @@ interface FormData {
 }
 
 export function SignupForm() {
+const [loading, setloading] = useState(false)
+
+
   const {
     register,
     handleSubmit,
@@ -23,14 +26,18 @@ export function SignupForm() {
   } = useForm<FormData>();
 
   const onSubmit = async (formData: FormData) => {
+    
     try {
+      setloading(true)
       const response = await axios.post("/api/submitform", formData);
       toast.success("Form submitted successfully");
       reset(); // Reset the form
     } catch (error) {
       console.error("Error submitting form", error);
       toast.error("Error submitting form");
+      setloading(false)
     }
+    setloading(false)
   };
 
   return (
@@ -127,7 +134,7 @@ export function SignupForm() {
           className="text-[max(0.6rem,min(0.7vw,14px))] font-medium text-[#DFDFDF] input-with-gradient-border"
           type="submit"
         >
-          Send Message
+          {loading?"Loading..": "Send Message"}
           <BottomGradient />
         </button>
       </form>

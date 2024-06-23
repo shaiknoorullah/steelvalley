@@ -82,7 +82,7 @@ const HomeHero = () => {
             <HeroBgSvg />
           </div>
           {/* bar */}
-          <div className="flex   herobar w-[90%] lg:w-fit base:justify-center md:gap-10 items-center rounded-full base:py-2 md:p-4 base:mt-[min(65vw,208px)] lg:mt-[min(15vw,200px)] z-20 border-gradient">
+          <Link href={"/products"} className="flex   herobar w-[90%] lg:w-fit base:justify-center md:gap-10 items-center rounded-full base:py-2 md:p-2 base:mt-[min(65vw,208px)] lg:mt-[min(15vw,200px)] z-20 border-gradient">
             <FlashSvg />
             <div className="flex flex-row md:gap-14 base:gap-2 ml-2 items-center">
               <Text variant="barText">
@@ -111,7 +111,7 @@ const HomeHero = () => {
                 </span>
               </Text>
             </div>
-          </div>
+          </Link>
           {/* title */}
           <div className="md:w-[75%] md:flex flex-col base:hidden ">
             <Text

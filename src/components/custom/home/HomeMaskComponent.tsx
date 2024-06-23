@@ -36,20 +36,20 @@ const HomeMaskComponent = () => {
           className="h-[800px] w-screen lg:h-[1050px] md:h-[700px] base:opacity-60 md:opacity-100"
         />
       </div>
-      <div className=" base:flex justify-center items-center h-[500px] lg:hidden relative">
+      <div className=" base:flex justify-center items-center h-[500px] lg:h-screen relative">
         <img
           src="/kitchens/kitchendemo.jpg"
           className="absolute opacity-20 w-[100%] h-[100%] object-cover"
         />
         <Text
           variant="secondaryTitle"
-          className=" text-[#666666] font-bold w-[80%] text-center z-50 "
+          className=" text-[#ffffff] z-[100000000] font-bold w-[80%] text-center"
           triggerAnimation={isSuccess}
         >
           {data?.data?.records[0]?.fields?.MaskTitle}
         </Text>
       </div>
-      <div className="max-w-[1920px] base:hidden lg:flex z-50">
+      {/* <div className="max-w-[1920px] base:hidden lg:flex z-50">
         <MaskContainer
           revealText={
             <Text
@@ -69,7 +69,7 @@ const HomeMaskComponent = () => {
             {data?.data?.records[0]?.fields?.MaskTitle}
           </Text>
         </MaskContainer>
-      </div>
+      </div> */}
     </div>
   );
 };

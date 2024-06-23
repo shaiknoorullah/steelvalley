@@ -38,7 +38,7 @@ export function AboutHeroParallax() {
         <div className="flex justify-center items-center ">
           <Text
             variant="secondaryTitle"
-            className="w-[85%] base:pt-96 mt-52 mi  text-[#777777]"
+            className="w-[85%] base:pt-[10rem] lg:pt-96 mt-52 mi  text-[#777777]"
           >
             <span className="text-primary">Market Leaders </span> in Custom
             Industrial-Grade Commercial Kitchen Equipment Market Leaders in

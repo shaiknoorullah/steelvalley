@@ -323,7 +323,7 @@ export function Footer() {
 
   const WorldComponent = useMemo(
     () => (
-      <div className="absolute w-[100%] base:-left-36 base:-bottom-28 md:-left-[300px] lg:-left-[500px] md:-bottom-[400px] lg:-bottom-[400px] h-[400px] md:h-[800px] lg:h-[1100px] z-20 backdrop-blur-sm bg-transparent">
+      <div className="absolute base:w-[120%] lg:w-full base:-left-36 base:-bottom-28 md:-left-[300px] lg:-left-[500px] md:-bottom-[400px] lg:-bottom-[400px] h-[500px] md:h-[800px] lg:h-[1200px] z-20 backdrop-blur-sm bg-transparent">
         <World data={sampleArcs} globeConfig={globeConfig} />
       </div>
     ),
