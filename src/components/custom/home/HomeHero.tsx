@@ -86,7 +86,7 @@ const HomeHero = () => {
             <FlashSvg />
             <div className="flex flex-row md:gap-14 base:gap-2 ml-2 items-center">
               <Text variant="barText">
-                We've successfully completed 100 projects
+                We&apos;ve successfully completed 100 projects
               </Text>
               <Text
                 variant="barText"
