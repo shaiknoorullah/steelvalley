@@ -1,7 +1,11 @@
-/*
-  Minimal i18n routing stub.
-  Plan 2 (Backend Foundation) will replace this with the real next-intl routing.
-  For Plan 3, the DS Link primitive only needs a default-exported Link component;
-  this stub re-exports next/link so build and tests don't break.
-*/
-export { default as Link } from "next/link";
+import { defineRouting } from "next-intl/routing";
+import { createNavigation } from "next-intl/navigation";
+
+export const routing = defineRouting({
+  locales: ["ar", "en"],
+  defaultLocale: "ar",
+  localePrefix: "as-needed",
+});
+
+export const { Link, redirect, usePathname, useRouter, getPathname } =
+  createNavigation(routing);

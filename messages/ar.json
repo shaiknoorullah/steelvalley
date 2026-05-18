@@ -1,0 +1,15 @@
+{
+  "Nav": {
+    "home": "الرئيسية",
+    "about": "عن الشركة",
+    "services": "الخدمات",
+    "products": "المنتجات",
+    "contact": "تواصل معنا",
+    "blog": "المدونة"
+  },
+  "Common": {
+    "languageSwitch": "English",
+    "enquire": "اطلب عرض سعر",
+    "skipToContent": "تخطي إلى المحتوى"
+  }
+}

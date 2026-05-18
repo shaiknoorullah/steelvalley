@@ -1,0 +1,15 @@
+{
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "products": "Products",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "Common": {
+    "languageSwitch": "العربية",
+    "enquire": "Get a Quote",
+    "skipToContent": "Skip to content"
+  }
+}
