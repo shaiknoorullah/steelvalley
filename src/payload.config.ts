@@ -16,6 +16,7 @@ import { Pages } from "./payload/collections/Pages";
 import { Enquiries } from "./payload/collections/Enquiries";
 import { Leads } from "./payload/collections/Leads";
 import { Settings } from "./payload/globals/Settings";
+import { Nav } from "./payload/globals/Nav";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -26,7 +27,7 @@ export default buildConfig({
   },
   editor: lexicalEditor(),
   collections: [Users, Media, LeadMagnets, Categories, Products, Services, Authors, Posts, Pages, Enquiries, Leads],
-  globals: [Settings],
+  globals: [Settings, Nav],
   localization: {
     locales: [
       { label: "العربية", code: "ar", rtl: true },
