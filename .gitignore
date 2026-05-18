@@ -32,6 +32,9 @@ yarn-error.log*
 
 # Ralph Loop runtime state
 .claude/.ralph-loop.local.md
+.claude/telegram-chat-id.local
+.claude/*.local
+.claude/*.local.*
 
 # Build artifacts from blender pipeline (rebuilt by npm run build:assets)
 /.tmp-blender/
