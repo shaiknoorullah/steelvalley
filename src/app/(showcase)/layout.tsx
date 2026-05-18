@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
+import { fontVariables } from "@/lib/fonts";
 import "../globals.css";
 
 export const metadata = { title: "Steel Valley — Component showcase" };
@@ -23,11 +24,14 @@ export default async function ShowcaseLayout({
 }: {
   children: ReactNode;
 }) {
+  // Showcase route uses English/LTR as the chrome (each inner pane sets its own
+  // dir for the LTR-vs-RTL demonstration). Default-locale messages keep the
+  // next-intl primitives resolving without entering the [locale] segment.
   const locale = routing.defaultLocale;
   const messages = (await import(`../../../messages/${locale}.json`)).default;
 
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html lang="en" dir="ltr" className={fontVariables}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}

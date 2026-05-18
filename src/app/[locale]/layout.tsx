@@ -3,6 +3,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale, getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { fontVariables } from "@/lib/fonts";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -32,7 +33,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
-    <html lang={locale} dir={dir}>
+    <html lang={locale} dir={dir} className={fontVariables}>
       <body>
         <NextIntlClientProvider messages={messages}>
           {children}

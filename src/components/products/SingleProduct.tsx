@@ -49,6 +49,7 @@ const SingleProduct: React.FC<SingleProductProps> = ({
       href={href}
       className="flex flex-col base:gap-5 md:justify-between md:w-[min(19vw,360px)] md:h-[min(23vw,427px)]"
     >
+      {/* eslint-disable-next-line @next/next/no-img-element -- TODO: legacy Pages Router component, retires when /products page migrates to App Router (Plan 4). */}
       <img src={imageSrc} alt={title} />
       <div className="flex flex-col gap-1">
         <Text variant="shortHeadings" className="text-[#EAEAEA]">
