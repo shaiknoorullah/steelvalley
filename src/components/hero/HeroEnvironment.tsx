@@ -1,13 +1,14 @@
 "use client";
 /**
- * HeroEnvironment — soft ContactShadows always-on, plus a placeholder
- * kitchen-plate backdrop that fades in during Stage 4 (Place).
+ * HeroEnvironment — soft ContactShadows, an environment map for PBR metals
+ * to reflect (critical — metalness=1.0 reads as pure black without one),
+ * plus a placeholder kitchen-plate backdrop that fades in during Stage 4.
  *
  * Spec ref: docs/superpowers/specs/2026-05-18-hero-from-blueprint-to-build.md §2.
  */
-import { ContactShadows } from "@react-three/drei";
+import { ContactShadows, Environment } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 import * as THREE from "three";
 import { useHeroProgress } from "./useHeroProgress";
 
@@ -25,6 +26,14 @@ export function HeroEnvironment() {
 
   return (
     <>
+      {/* Environment IBL. The "warehouse" preset gives our metallic stainless
+          something to reflect — without it metalness=1.0 reads as pure black.
+          Wrapped in its own Suspense with null fallback so the HDRI download
+          (~100KB) doesn't trigger the parent canvas's HeroPosterFallback. */}
+      <Suspense fallback={null}>
+        <Environment preset="warehouse" background={false} environmentIntensity={0.85} />
+      </Suspense>
+
       <ContactShadows
         position={[0, 0.01, 0]}
         opacity={0.45}
@@ -33,6 +42,7 @@ export function HeroEnvironment() {
         far={4}
         color={0x000000}
       />
+
       {/*
         TODO: swap for user-supplied kitchen plate AVIF.
         For now this is a flat warm-tone plane sitting well behind the
@@ -42,7 +52,7 @@ export function HeroEnvironment() {
         <planeGeometry args={[8, 4.5]} />
         <meshBasicMaterial
           ref={plateMatRef}
-          color={0x2a221d}
+          color={0x3a2f25}
           transparent
           opacity={0}
           toneMapped={false}

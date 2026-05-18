@@ -34,18 +34,21 @@ export function HeroLights() {
 
   return (
     <>
-      <ambientLight intensity={0.55} color={0xffffff} />
+      {/* Boosted lighting so the PBR-lit stages (Form/Edge/Place) actually
+          read as brushed steel, not muddy gray. The wireframe stage is no
+          longer affected by these — we override gl_FragColor before they
+          contribute. */}
+      <ambientLight intensity={1.0} color={0xffffff} />
       <directionalLight
         position={[4, 6, 4]}
-        intensity={1.1}
+        intensity={2.6}
         color={0xffffff}
         castShadow={false}
       />
-      {/* Secondary key from the opposite side — keeps the CAD wireframe legible
-          even in the darker top-down stage. */}
+      {/* Secondary key from the opposite side — keeps the metal legible. */}
       <directionalLight
         position={[-3, 4, -2]}
-        intensity={0.35}
+        intensity={0.8}
         color={0xb8c4d2}
       />
       <spotLight
