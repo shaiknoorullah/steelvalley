@@ -1,13 +1,38 @@
 import type { ReactNode } from "react";
+import { NextIntlClientProvider } from "next-intl";
+import { routing } from "@/i18n/routing";
+import "../globals.css";
 
 export const metadata = { title: "Steel Valley — Component showcase" };
 
 /*
-  Showcase route group layout.
-  Until Plan 2 introduces the [locale] segment, the only root layout is src/app/layout.tsx
-  (which renders <html lang="ar" dir="rtl">). The showcase page sets dir on its inner
-  panes, so a nested layout without <html>/<body> is correct here.
+  Showcase route group root layout.
+
+  Plan 2 moved the canonical root layout into `app/[locale]/layout.tsx`
+  (locale-aware <html lang dir><body>). The (showcase) route group lives
+  outside that locale segment, so we provide our own <html>/<body> here.
+
+  The DS Link primitive uses next-intl's localized Link, which requires
+  a NextIntlClientProvider to resolve the active locale. We provide one
+  with the default locale's messages so /dev/components and
+  /app-router-health continue to render without entering the [locale]
+  segment.
 */
-export default function ShowcaseLayout({ children }: { children: ReactNode }) {
-  return <>{children}</>;
+export default async function ShowcaseLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const locale = routing.defaultLocale;
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
+
+  return (
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+      <body>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
 }
