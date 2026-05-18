@@ -34,32 +34,53 @@ export function HeroLights() {
 
   return (
     <>
-      {/* Three-point lighting tuned for industrial drama:
-          - low ambient so shadows have depth
-          - warm key + cool fill = stainless reflectivity that reads as alive
-          - rust spotlight ramps during Heat (forge glow) and Edge (raking rim) */}
-      <ambientLight intensity={0.45} color={0xb8c4d2} />
+      {/* v3 lighting: the IBL (kiara_interior_1k HDR) carries most of the
+          lighting; we add three local fills for direction + drama.
+          - Soft cool ambient bounces light into shadows
+          - Warm key from camera-side simulates the kitchen's hood
+          - Cool fill from the opposite side picks out the steel edges
+          - Three pendant cones project warm light into the haze (GodRays
+            in HeroPostFX will turn these into visible volumetric shafts)
+          - Rust accent ramps during Heat (forge glow) and Edge (raking rim) */}
+      <ambientLight intensity={0.25} color={0xb8c4d2} />
       <directionalLight
         position={[4, 6, 4]}
-        intensity={3.2}
+        intensity={1.6}
         color={0xffefd5}
         castShadow={false}
       />
       <directionalLight
         position={[-3, 4, -2]}
-        intensity={1.1}
+        intensity={0.5}
         color={0x88a3c2}
       />
-      {/* Overhead workshop pendant — narrow cone over the workstation. */}
+      {/* Three overhead pendant cones — positions match HeroKitchenScene's
+          PENDANT_BULB meshes for the GodRays sources */}
       <spotLight
-        position={[0, 4.2, 0]}
-        target-position={[0, 0.8, 0]}
-        angle={0.45}
-        penumbra={0.6}
-        distance={6}
-        intensity={1.4}
+        position={[-1.2, 3.2, 0]}
+        angle={0.5}
+        penumbra={0.7}
+        distance={5}
+        intensity={1.8}
         color={0xfff0d4}
       />
+      <spotLight
+        position={[0, 3.2, 0.3]}
+        angle={0.5}
+        penumbra={0.7}
+        distance={5}
+        intensity={2.2}
+        color={0xfff0d4}
+      />
+      <spotLight
+        position={[1.2, 3.2, 0]}
+        angle={0.5}
+        penumbra={0.7}
+        distance={5}
+        intensity={1.8}
+        color={0xfff0d4}
+      />
+      {/* Rust accent — Heat/Edge stages only */}
       <spotLight
         ref={spotRef}
         position={[1.2, 2.0, 1.8]}
