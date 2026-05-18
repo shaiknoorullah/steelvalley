@@ -26,22 +26,20 @@ interface Waypoint {
   fov: number;
 }
 
-/** Five waypoints — one per stage boundary. v4: workstation stays the hero
- *  while the kitchen frames it. Cameras land at heights/angles that catch
- *  the kitchen ceiling pendants in frame. */
+/** Five waypoints — one per stage boundary. v4.1: workstation centred in
+ *  every framed stage (Form → Edge → Place) while the kitchen wraps. */
 export const HERO_WAYPOINTS: readonly Waypoint[] = [
   // Earth — top-down CAD plan view
   { p: 0.0, pos: [0, 8, 0.01], look: [0, 0, 0], fov: 35 },
   // Heat — tilts to ~30° elevation, gentle dolly in
   { p: 0.2, pos: [2.5, 6, 4], look: [0, 0.8, 0], fov: 40 },
-  // Form — 45° elevation, the workstation framed in the middle third
-  { p: 0.5, pos: [2.8, 2.0, 3.4], look: [0, 0.85, 0], fov: 40 },
-  // Edge — dolly close on the front bullnose; pendant array catches frame top
-  { p: 0.7, pos: [1.4, 1.2, 2.0], look: [0.25, 0.85, 0.25], fov: 32 },
-  // Place — final hero shot: workstation centre, kitchen wrapping, pendant
-  // glow upper-third. Pull-back enough that the workstation reads as a
-  // PRODUCT in its context, not a tiny detail on the floor.
-  { p: 1.0, pos: [2.6, 1.7, 3.4], look: [0, 1.1, 0], fov: 38 },
+  // Form — 35° elevation, workstation centred mid-frame
+  { p: 0.5, pos: [3.4, 2.4, 4.0], look: [0, 0.85, 0], fov: 42 },
+  // Edge — closer dolly, but stays wide enough to hold the workstation
+  { p: 0.7, pos: [2.4, 1.6, 2.8], look: [0, 0.85, 0], fov: 36 },
+  // Place — hero shot: workstation centre-frame, kitchen wraps, pendants
+  // catch upper third
+  { p: 1.0, pos: [3.2, 2.0, 4.2], look: [0, 1.0, 0], fov: 40 },
 ] as const;
 
 function lerpVec3(a: Vec3, b: Vec3, t: number): [number, number, number] {

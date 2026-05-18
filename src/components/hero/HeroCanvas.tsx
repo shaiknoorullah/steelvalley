@@ -1,23 +1,17 @@
 "use client";
 /**
- * HeroCanvas v3 — R3F Canvas composing lights + workstation + kitchen scene +
- * environment + camera rig + post-processing chain.
+ * HeroCanvas v4.1 — R3F Canvas composing lights + workstation + kitchen +
+ * environment + camera rig + post-processing.
  *
- * Spec refs:
- *   docs/superpowers/specs/2026-05-18-hero-from-blueprint-to-build.md §3
- *   docs/superpowers/specs/2026-05-18-hero-v3-cinematic-kitchen.md §3, §5
- *
- * Removed in v3:
- *   - HeroSceneFurnish (replaced by kitchen.glb)
- *   - HeroDust (replaced by exponential fog + GodRays through fog)
- *
- * Added in v3:
- *   - HeroKitchenScene (full PBR-textured kitchen)
- *   - HeroPostFX (EffectComposer chain)
+ * v4.1 fix: removed the useState<THREE.Mesh[]> pendant-ref bridge. Three.js
+ * objects contain parent/children cycles; once a Mesh sits in React state,
+ * something in the RSC / error path tries to `JSON.stringify` it and the
+ * page crashes ("Converting circular structure to JSON"). HeroPostFX now
+ * looks pendants up by name via the scene graph each frame.
  */
 import { AdaptiveDpr } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import * as THREE from "three";
 import { HeroCameraRig } from "./HeroCameraRig";
 import { HeroEnvironment } from "./HeroEnvironment";
@@ -37,16 +31,6 @@ export interface HeroCanvasProps {
 }
 
 export function HeroCanvas({ rtl = false, enablePostFX = true, midTier = false }: HeroCanvasProps) {
-  // Pendant refs are wired by HeroKitchenScene. We use the centre pendant
-  // (closest to camera, most visually impactful) as the GodRays sun.
-  // Two side pendants get strong emissive + Bloom for similar visual effect
-  // at zero added GPU cost.
-  const [pendantRefs, setPendantRefs] = useState<THREE.Mesh[]>([]);
-  const centerPendant =
-    pendantRefs.length >= 2
-      ? pendantRefs[1] ?? pendantRefs[0]
-      : pendantRefs[0] ?? null;
-
   return (
     <Suspense fallback={<HeroPosterFallback />}>
       <Canvas
@@ -66,8 +50,6 @@ export function HeroCanvas({ rtl = false, enablePostFX = true, midTier = false }
         style={{ position: "absolute", inset: 0 }}
       >
         <color attach="background" args={["#0a0d12"]} />
-        {/* Exponential height fog — soft atmospheric haze that lets light
-            shafts read as visible volume without painting cartoon dust. */}
         <fogExp2 attach="fog" args={["#0a0d12", 0.075]} />
 
         <AdaptiveDpr pixelated />
@@ -76,17 +58,13 @@ export function HeroCanvas({ rtl = false, enablePostFX = true, midTier = false }
         <HeroLights />
 
         <Suspense fallback={null}>
-          <HeroKitchenScene onPendantsReady={setPendantRefs} />
+          <HeroKitchenScene />
         </Suspense>
         <HeroWorkstation />
 
         <HeroCameraRig rtl={rtl} />
 
-        <HeroPostFX
-          enabled={enablePostFX}
-          midTier={midTier}
-          godrayPendant={centerPendant}
-        />
+        <HeroPostFX enabled={enablePostFX} midTier={midTier} />
       </Canvas>
     </Suspense>
   );

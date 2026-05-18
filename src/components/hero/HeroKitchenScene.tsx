@@ -28,13 +28,7 @@ import { useHeroProgress } from "./useHeroProgress";
 const GLB_URL = "/3d/kitchen.glb";
 useGLTF.preload(GLB_URL);
 
-interface Props {
-  /** Refs are attached to the pendant emissive meshes so HeroPostFX can hand
-   *  them to <GodRays> as light sources. */
-  onPendantsReady?: (refs: THREE.Mesh[]) => void;
-}
-
-export function HeroKitchenScene({ onPendantsReady }: Props) {
+export function HeroKitchenScene() {
   const { scene } = useGLTF(GLB_URL);
 
   // Texture sets loaded in parallel (Suspense'd by useTexture)
@@ -135,7 +129,10 @@ export function HeroKitchenScene({ onPendantsReady }: Props) {
     return { steel, concrete, tile, plaster, pendant };
   }, [steelTex, concreteTex, tileTex, plasterTex]);
 
-  // Pendant refs for HeroPostFX god rays
+  // Pendant refs cached for the local opacity-fade frame loop only.
+  // HeroPostFX queries the scene by name; we deliberately do NOT lift these
+  // refs through React state — three.js Object3Ds contain parent/children
+  // cycles and break JSON.stringify in production error paths.
   const pendantRefs = useRef<THREE.Mesh[]>([]);
 
   useEffect(() => {
@@ -161,12 +158,26 @@ export function HeroKitchenScene({ onPendantsReady }: Props) {
           pendantRefs.current.push(obj);
           break;
         default:
-          // Unknown material — leave as-is so we can see/debug
           break;
       }
     });
-    onPendantsReady?.(pendantRefs.current);
-  }, [scene, materials, onPendantsReady]);
+    // Tag the pendant closest to x=0 as "Pendant_Center" so HeroPostFX
+    // can find it via scene.getObjectByName for GodRays.
+    if (pendantRefs.current.length > 0) {
+      const pos = new THREE.Vector3();
+      let centre = pendantRefs.current[0]!;
+      let bestDist = Infinity;
+      for (const m of pendantRefs.current) {
+        m.getWorldPosition(pos);
+        const d = Math.abs(pos.x);
+        if (d < bestDist) {
+          bestDist = d;
+          centre = m;
+        }
+      }
+      centre.name = "Pendant_Center";
+    }
+  }, [scene, materials]);
 
   // Fade in across Form → Place
   const lastT = useRef(-1);
