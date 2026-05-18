@@ -37,10 +37,15 @@ export interface HeroCanvasProps {
 }
 
 export function HeroCanvas({ rtl = false, enablePostFX = true, midTier = false }: HeroCanvasProps) {
-  // Pendant refs are wired by HeroKitchenScene → consumed by future GodRays
-  // (current cycle: SSAO + Bloom + DoF + Vignette + ToneMapping). GodRays
-  // pass is added once pendant refs are stable across renders.
-  const [, setPendantRefs] = useState<THREE.Mesh[]>([]);
+  // Pendant refs are wired by HeroKitchenScene. We use the centre pendant
+  // (closest to camera, most visually impactful) as the GodRays sun.
+  // Two side pendants get strong emissive + Bloom for similar visual effect
+  // at zero added GPU cost.
+  const [pendantRefs, setPendantRefs] = useState<THREE.Mesh[]>([]);
+  const centerPendant =
+    pendantRefs.length >= 2
+      ? pendantRefs[1] ?? pendantRefs[0]
+      : pendantRefs[0] ?? null;
 
   return (
     <Suspense fallback={<HeroPosterFallback />}>
@@ -77,7 +82,11 @@ export function HeroCanvas({ rtl = false, enablePostFX = true, midTier = false }
 
         <HeroCameraRig rtl={rtl} />
 
-        <HeroPostFX enabled={enablePostFX} midTier={midTier} />
+        <HeroPostFX
+          enabled={enablePostFX}
+          midTier={midTier}
+          godrayPendant={centerPendant}
+        />
       </Canvas>
     </Suspense>
   );

@@ -26,22 +26,22 @@ interface Waypoint {
   fov: number;
 }
 
-/** Five waypoints — one per stage boundary. See spec §3.
- *
- *  Place stage pulls back FAR (z=7, y=2.4) so the surrounding workshop
- *  (back walls + second workstation from HeroSceneFurnish) frames the BT-1875
- *  in context — "from drawing to reality, in a real shop". */
+/** Five waypoints — one per stage boundary. v4: workstation stays the hero
+ *  while the kitchen frames it. Cameras land at heights/angles that catch
+ *  the kitchen ceiling pendants in frame. */
 export const HERO_WAYPOINTS: readonly Waypoint[] = [
   // Earth — top-down CAD plan view
   { p: 0.0, pos: [0, 8, 0.01], look: [0, 0, 0], fov: 35 },
   // Heat — tilts to ~30° elevation, gentle dolly in
   { p: 0.2, pos: [2.5, 6, 4], look: [0, 0.8, 0], fov: 40 },
-  // Form — 45° elevation, gentle yaw orbit
-  { p: 0.5, pos: [3.5, 3, 5], look: [0, 0.8, 0], fov: 45 },
-  // Edge — dolly close on front-left bullnose
-  { p: 0.7, pos: [1.5, 1.2, 2.2], look: [0.5, 0.85, 0.5], fov: 35 },
-  // Place — wide-angle pull-back, shop visible
-  { p: 1.0, pos: [4.5, 2.4, 6.5], look: [0, 1.0, 0], fov: 38 },
+  // Form — 45° elevation, the workstation framed in the middle third
+  { p: 0.5, pos: [2.8, 2.0, 3.4], look: [0, 0.85, 0], fov: 40 },
+  // Edge — dolly close on the front bullnose; pendant array catches frame top
+  { p: 0.7, pos: [1.4, 1.2, 2.0], look: [0.25, 0.85, 0.25], fov: 32 },
+  // Place — final hero shot: workstation centre, kitchen wrapping, pendant
+  // glow upper-third. Pull-back enough that the workstation reads as a
+  // PRODUCT in its context, not a tiny detail on the floor.
+  { p: 1.0, pos: [2.6, 1.7, 3.4], look: [0, 1.1, 0], fov: 38 },
 ] as const;
 
 function lerpVec3(a: Vec3, b: Vec3, t: number): [number, number, number] {

@@ -121,11 +121,16 @@ export function HeroKitchenScene({ onPendantsReady }: Props) {
       transparent: true,
       opacity: 0,
     });
+    // Pendant emissive — high-luminance pure-color so Bloom unambiguously
+    // picks it up. We do NOT fade opacity (start full) because emissive +
+    // bloom doesn't blend nicely with alpha. Visibility is controlled by
+    // adding/removing the meshes from the scene via the parent material
+    // assignment loop instead.
     const pendant = new THREE.MeshBasicMaterial({
-      color: 0xfff0d4,
+      color: new THREE.Color(2.5, 2.3, 1.8),
       toneMapped: false,
-      transparent: true,
-      opacity: 0,
+      transparent: false,
+      opacity: 1,
     });
     return { steel, concrete, tile, plaster, pendant };
   }, [steelTex, concreteTex, tileTex, plasterTex]);
@@ -174,9 +179,12 @@ export function HeroKitchenScene({ onPendantsReady }: Props) {
     materials.concrete.opacity = t;
     materials.tile.opacity = t;
     materials.plaster.opacity = t;
-    // Pendant bulbs come in slightly later so they ramp visibly through the
-    // god rays as you reach Edge/Place
-    materials.pendant.opacity = THREE.MathUtils.smoothstep(progress, 0.6, 0.95);
+    // Pendants stay full-on once the kitchen is visible (Form onward). We
+    // toggle visibility via the mesh, not the material, so Bloom always
+    // sees full luminance.
+    pendantRefs.current.forEach((m) => {
+      m.visible = t > 0.05;
+    });
   });
 
   return <primitive object={scene} />;
