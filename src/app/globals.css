@@ -1432,3 +1432,60 @@ html[lang="ar"] [data-post-pullquote] {
   line-height: 1.5;
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Legal pages
+   ───────────────────────────────────────────────────────────────────────── */
+
+[data-legal-article] {
+  padding-block: clamp(3rem, 6vw, 6rem) clamp(4rem, 8vw, 8rem);
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  max-inline-size: 70ch;
+  margin-inline: auto;
+}
+[data-legal-article] h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin: 0 0 1rem;
+  letter-spacing: -0.01em;
+}
+html[lang="ar"] [data-legal-article] h1 {
+  font-family: var(--font-arabic-display);
+  letter-spacing: 0;
+}
+[data-legal-article] h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.375rem;
+  margin: 2.5rem 0 1rem;
+}
+html[lang="ar"] [data-legal-article] h2 {
+  font-family: var(--font-arabic-display);
+}
+[data-legal-article] p,
+[data-legal-article] li {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+[data-legal-article] ul {
+  padding-inline-start: 1.25rem;
+}
+[data-legal-meta] {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-block-end: 0.5rem;
+}
+[data-legal-todo] {
+  margin-block-start: 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px dashed var(--color-rust);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-rust);
+}
