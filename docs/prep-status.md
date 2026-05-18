@@ -7,7 +7,7 @@ Live status for the technical-prep work track. Updated at the end of every plan.
 | # | Plan | Status | Notes |
 |---|------|--------|-------|
 | 1 | Security & Scaffold | ✅ complete | Branch `redesign`, Next 15 + React 19, App Router alongside Pages Router |
-| 2 | Backend Foundation (Payload + Supabase + i18n) | ⏸ pending | Blocked on Supabase project credentials |
+| 2 | Backend Foundation (Payload + Supabase + i18n) | 🟡 partial — Tasks 2-15 done, Tasks 16-24 blocked on Supabase credentials | 11 Payload collections + 2 globals defined; `/admin` + REST + GraphQL routes mounted via `(payload)` route group; `next.config.mjs` wrapped with `withPayload`. Tasks 16 (first boot / admin user) and 17 (seed) need a live Supabase Postgres. Tasks 18-22 (next-intl + locale routing) deferred to a separate follow-up agent to avoid conflicts with App Router root layout. Tasks 23-24 (smoke tests + final status update) run after both. |
 | 3 | Design System + Primitives | ⏸ pending | Will absorb final tokens from Claude Design when they land |
 | 4 | Conversion + Discovery | ⏸ pending | Resend API key required |
 | 5 | Performance Scaffolding | ⏸ pending | |
