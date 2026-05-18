@@ -90,6 +90,49 @@ public/
 
 **Texture budget:** 9 maps × ~150 KB ≈ 1.4 MB. Total new assets ≈ 4 MB (HDR + textures + GLB). All lazy-loaded behind `<Lazy3D>`.
 
+### Smart compression + distance-based quality (per user, added 2026-05-18)
+
+The user's right — not every surface needs full-res maps. Tiering:
+
+| Tier | Surfaces | Texture resolution | Why |
+|---|---|---|---|
+| **Hero** (camera proximity ≤ 1.5m) | BT-1875 workstation top, bullnose edge, weld beads | 1024×1024 JPG q85 | Camera dollies right up to these in Edge stage |
+| **Mid** (1.5-4m) | Background prep tables, exhaust hood, wall shelving, hanging utensil rail | 512×512 JPG q80 | Visible at distance but never close |
+| **Far** (>4m) | Polished concrete floor (with high tiling so res-per-tile stays decent), back tile wall, side plaster wall | 512×512 JPG q75 | Always far, plus tiled |
+| **HDR** | IBL environment | 2K HDR, ~2 MB | `Environment` only loads from one URL; smaller HDRs lose specular detail. 2K is the sweet spot. |
+
+Each `useTexture` call gets the right tier path. Concrete and tile use `RepeatWrapping` 2-4× so 512px reads as 1K-2K equivalent at the surface size.
+
+### Mesh LOD
+
+Following the same logic:
+
+- **BT-1875**: full geometry (existing) — beveled edges, full leg geometry, weld bead curves. Currently ≈12k tris, well within budget.
+- **Background prep tables**: SKIP the bevel modifier (sharp edges OK at distance), fewer leg segments (8 instead of 16). ≈2k tris each.
+- **Exhaust hood**: simple beveled box + duct cylinder. ≈800 tris.
+- **Wall shelving**: 4 boxes total. ≈100 tris.
+- **Utensils**: 4 hanging objects, each ≈50 tris (low-poly silhouettes only — they're ambient detail).
+- **Walls/floor**: 4 quads. 8 tris each, 32 total.
+
+**Total kitchen scene polycount target: <20k tris**. Decoded GLB <500KB.
+
+### Lazy-loading topology
+
+Strict 3-tier load:
+
+1. **First paint (no extra JS/assets)**: loader + design system + hero copy + canvas with `<Suspense fallback={<HeroPosterFallback/>}>`. No 3D fetches yet.
+2. **PerfGate allows mount** (deviceMemory ≥ 4, 4G): the Lazy3D-wrapped `HeroCanvas` chunk lands. This triggers:
+   - HDR fetch (parallel)
+   - workstation GLB fetch (already done by v1)
+   - PBR texture sets fetch (parallel)
+3. **Scroll progress ≥ 0.3** (entering Form stage): kitchen.glb fetch begins. Until it lands, the scene shows just the wireframe-workstation transitioning to PBR — the kitchen pops in by the time we reach Form/Edge.
+
+`HeroKitchenScene` uses `useGLTF.preload('/3d/kitchen.glb')` triggered by a `useEffect` that runs only when stage ≥ 1 (Heat). This way the GLB is fetched while the user is still in the Heat stage so it's ready by Form.
+
+### Instancing
+
+Pendants (3) and utensils (4): use `<InstancedMesh>` so each set is one draw call. Saves 5 draw calls + their state changes.
+
 ### Component refactor
 
 ```
