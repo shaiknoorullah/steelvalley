@@ -17,6 +17,9 @@ export default function middleware(req: NextRequest) {
     pathname.startsWith("/app-router-health") ||
     pathname.startsWith("/dev/") ||
     pathname === "/dev" ||
+    pathname === "/og" ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/robots.txt" ||
     pathname.includes(".")
   ) {
     return;
@@ -27,8 +30,9 @@ export default function middleware(req: NextRequest) {
 
 export const config = {
   // Match everything except Payload, the API, Next internals, static assets,
-  // the dev showcase route group, and the dev health-check route.
+  // the dev showcase route group, the dev health-check route, SEO routes,
+  // and the OG image generator.
   matcher: [
-    "/((?!admin|api|_next/static|_next/image|app-router-health|dev|favicon.ico).*)",
+    "/((?!admin|api|_next/static|_next/image|app-router-health|dev|og|sitemap.xml|robots.txt|favicon.ico).*)",
   ],
 };
