@@ -6,11 +6,13 @@ Live status for the technical-prep work track. Updated at the end of every plan.
 
 | # | Plan | Status | Notes |
 |---|------|--------|-------|
-| 1 | Security & Scaffold | ✅ complete | Branch `redesign`, Next 15 + React 19, App Router alongside Pages Router |
-| 2 | Backend Foundation (Payload + Supabase + i18n) | ⏸ pending | Blocked on Supabase project credentials |
-| 3 | Design System + Primitives | ✅ complete (provisional tokens) | All 17 primitives RTL-safe; `/dev/components` route shows both directions; axe checks pass |
-| 4 | Conversion + Discovery | ⏸ pending | Resend API key required |
-| 5 | Performance Scaffolding | ⏸ pending | |
+| 1 | Security & Scaffold | ✅ complete | Branch `redesign`, Next 15 + React 19, App Router alongside Pages Router. Airtable rotation + history scrub SKIPPED per user direction (will live with the leaked token). |
+| 2 | Backend Foundation (Payload + Supabase + i18n) | 🟡 partial — Tasks 2-15 done, Tasks 16-24 blocked on Supabase credentials | 11 Payload collections + 2 globals defined; `/admin` + REST + GraphQL routes mounted via `(payload)` route group; `next.config.mjs` wrapped with `withPayload`. Tasks 16 (first boot / admin user) and 17 (seed) need a live Supabase Postgres. Tasks 18-22 (next-intl + locale routing) deferred to a separate follow-up agent to avoid conflicts with App Router root layout. Tasks 23-24 (smoke tests + final status update) run after both. |
+| 3 | Design System + Primitives | ✅ complete (provisional tokens) | All 17 primitives RTL-safe; `/dev/components` route shows both directions; axe checks pass. Stub `src/i18n/routing.ts` re-exports `next/link` until Plan 2 next-intl follow-up replaces it. |
+| 4 | Conversion + Discovery | ⏸ pending | Blocked on Resend, OpenPanel, WhatsApp keys |
+| 5 | Performance Scaffolding | ⏸ pending | Blocked on GitHub CI secrets |
+| 6 | Hero Assets + Runtime | 🟡 Blender pipeline done | `scripts/blender/*.py` + `public/3d/{bt-1875,edge-monument}.glb` shipped (47.9 KB + 2.2 KB, both under budget). Runtime (R3F + shader + GSAP) pending. |
+| 7 | Loader + Page Transitions | ⏸ pending | Depends on Plan 3 (✅ done). Ready to dispatch. |
 
 ## What runs locally today
 - `npm install`
