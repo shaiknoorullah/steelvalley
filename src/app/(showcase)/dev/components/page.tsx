@@ -96,26 +96,26 @@ function Showcase() {
 
       <h3>Checkbox + Radio</h3>
       <label style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-        <Checkbox /> Accept terms
+        <Checkbox aria-label="Accept terms" /> Accept terms
       </label>
-      <RadioGroup defaultValue="a">
+      <RadioGroup defaultValue="a" aria-label="Demo options">
         <label style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <RadioGroupItem value="a" /> Option A
+          <RadioGroupItem value="a" aria-label="Option A" /> Option A
         </label>
         <label style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <RadioGroupItem value="b" /> Option B
+          <RadioGroupItem value="b" aria-label="Option B" /> Option B
         </label>
       </RadioGroup>
 
       <h3>RadioCard</h3>
-      <RadioGroup defaultValue="restaurant" style={{ display: "grid", gap: "0.5rem" }}>
+      <RadioGroup defaultValue="restaurant" aria-label="Project type" style={{ display: "grid", gap: "0.5rem" }}>
         <RadioCard value="restaurant" title="Restaurant fit-out" description="Cooking lines, prep tables, hoods." />
         <RadioCard value="hotel" title="Hotel kitchen" description="Banquet, room-service, staff dining." />
       </RadioGroup>
 
       <h3>Select</h3>
       <Select>
-        <SelectTrigger>
+        <SelectTrigger aria-label="Choose material">
           <SelectValue placeholder="Choose…" />
         </SelectTrigger>
         <SelectContent>
