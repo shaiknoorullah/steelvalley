@@ -26,7 +26,15 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env*.local
+.env
+.env.*
+!.env.example
+
+# Ralph Loop runtime state
+.claude/.ralph-loop.local.md
+
+# Build artifacts from blender pipeline (rebuilt by npm run build:assets)
+/.tmp-blender/
 
 # vercel
 .vercel
