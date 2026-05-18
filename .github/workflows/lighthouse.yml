@@ -1,0 +1,44 @@
+name: Lighthouse + size-limit
+
+on:
+  pull_request:
+    branches: [main, redesign]
+
+jobs:
+  perf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build (without DB — fast lint/type/bundle check)
+        if: ${{ secrets.DATABASE_URL_TEST == '' }}
+        run: npm run build || echo "Build requires DATABASE_URL_TEST secret — skipping perf job. Add the secret to enable full Lighthouse + size-limit CI."
+
+      - name: Build (with DB)
+        if: ${{ secrets.DATABASE_URL_TEST != '' }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET_TEST }}
+          PAYLOAD_PUBLIC_SERVER_URL: http://localhost:3000
+        run: npm run build
+
+      - name: size-limit
+        if: ${{ secrets.DATABASE_URL_TEST != '' }}
+        run: npx size-limit
+
+      - name: Lighthouse CI
+        if: ${{ secrets.DATABASE_URL_TEST != '' }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET_TEST }}
+          PAYLOAD_PUBLIC_SERVER_URL: http://localhost:3000
+        run: npx @lhci/cli autorun

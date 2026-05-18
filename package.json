@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
+    "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.60.0",
     "@size-limit/file": "^12.1.0",
     "@testing-library/dom": "^10.4.1",
