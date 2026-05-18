@@ -21,7 +21,7 @@ const consoleLogger = {
 
 function isDbConnectivityError(err: unknown): boolean {
   const message = err instanceof Error ? err.message : String(err);
-  return /ECONNREFUSED|ENOTFOUND|connect ETIMEDOUT|connection|DATABASE_URL|empty database url|getaddrinfo|invalid url|password authentication/i.test(
+  return /ECONNREFUSED|ENOTFOUND|connect ETIMEDOUT|connection|DATABASE_URL|empty database url|getaddrinfo|invalid url|password authentication|cannot connect to postgres|sasl|scram|client password must be a string/i.test(
     message,
   );
 }
