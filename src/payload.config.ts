@@ -6,6 +6,7 @@ import { s3Storage } from "@payloadcms/storage-s3";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { Users } from "./payload/collections/Users";
 import { Media } from "./payload/collections/Media";
+import { LeadMagnets } from "./payload/collections/LeadMagnets";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -15,7 +16,7 @@ export default buildConfig({
     user: "users",
   },
   editor: lexicalEditor(),
-  collections: [Users, Media],
+  collections: [Users, Media, LeadMagnets],
   globals: [
     // populated by Tasks 13-14
   ],
