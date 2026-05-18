@@ -10,6 +10,8 @@ import { LeadMagnets } from "./payload/collections/LeadMagnets";
 import { Categories } from "./payload/collections/Categories";
 import { Products } from "./payload/collections/Products";
 import { Services } from "./payload/collections/Services";
+import { Authors } from "./payload/collections/Authors";
+import { Posts } from "./payload/collections/Posts";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -19,7 +21,7 @@ export default buildConfig({
     user: "users",
   },
   editor: lexicalEditor(),
-  collections: [Users, Media, LeadMagnets, Categories, Products, Services],
+  collections: [Users, Media, LeadMagnets, Categories, Products, Services, Authors, Posts],
   globals: [
     // populated by Tasks 13-14
   ],
