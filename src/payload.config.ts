@@ -7,6 +7,7 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { Users } from "./payload/collections/Users";
 import { Media } from "./payload/collections/Media";
 import { LeadMagnets } from "./payload/collections/LeadMagnets";
+import { Categories } from "./payload/collections/Categories";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -16,7 +17,7 @@ export default buildConfig({
     user: "users",
   },
   editor: lexicalEditor(),
-  collections: [Users, Media, LeadMagnets],
+  collections: [Users, Media, LeadMagnets, Categories],
   globals: [
     // populated by Tasks 13-14
   ],
