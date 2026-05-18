@@ -12,6 +12,7 @@ import { Products } from "./payload/collections/Products";
 import { Services } from "./payload/collections/Services";
 import { Authors } from "./payload/collections/Authors";
 import { Posts } from "./payload/collections/Posts";
+import { Pages } from "./payload/collections/Pages";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -21,7 +22,7 @@ export default buildConfig({
     user: "users",
   },
   editor: lexicalEditor(),
-  collections: [Users, Media, LeadMagnets, Categories, Products, Services, Authors, Posts],
+  collections: [Users, Media, LeadMagnets, Categories, Products, Services, Authors, Posts, Pages],
   globals: [
     // populated by Tasks 13-14
   ],
