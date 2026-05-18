@@ -10,7 +10,7 @@
  */
 import { useCallback, useEffect, useRef } from "react";
 import { HERO_SKIP_CHIP, HERO_STAGES } from "./HeroCopy";
-import { useLocaleSafe } from "./_useLocaleSafe";
+import { useLocale } from "next-intl";
 import { useHeroProgress } from "./useHeroProgress";
 
 const CROSSFADE_MS = 180;
@@ -22,7 +22,7 @@ export interface HeroOverlayProps {
 
 export function HeroOverlay({ pinSelector }: HeroOverlayProps) {
   const stage = useHeroProgress((s) => s.stage);
-  const locale = useLocaleSafe();
+  const locale = useLocale();
   const isAr = locale === "ar";
 
   // Skip = scroll to end of pinned section.

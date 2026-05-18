@@ -8,10 +8,10 @@
  * Spec ref: docs/superpowers/specs/2026-05-18-hero-from-blueprint-to-build.md §5.
  */
 import { HERO_STAGES, HERO_STATIC_HEADLINE } from "./HeroCopy";
-import { useLocaleSafe } from "./_useLocaleSafe";
+import { useLocale } from "next-intl";
 
 export function HeroPosterFallback() {
-  const locale = useLocaleSafe();
+  const locale = useLocale();
   const isAr = locale === "ar";
   const place = HERO_STAGES[4]!;
   const headline = isAr ? HERO_STATIC_HEADLINE.ar : HERO_STATIC_HEADLINE.en;

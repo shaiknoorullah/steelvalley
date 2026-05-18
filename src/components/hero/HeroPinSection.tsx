@@ -14,9 +14,8 @@ import { HeroCanvas } from "./HeroCanvas";
 import { HeroOverlay } from "./HeroOverlay";
 import { HeroPosterFallback } from "./HeroPosterFallback";
 import { HeroScrollDriver } from "./HeroScrollDriver";
-import { Lazy3D } from "./_Lazy3D.local";
-import { PerfGate } from "./_PerfGate.local";
-import { useLocaleSafe } from "./_useLocaleSafe";
+import { useLocale } from "next-intl";
+import { PerfGate } from "@/ds/perf";
 
 const PIN_ID = "sv-hero-pin";
 const PIN_SELECTOR = `#${PIN_ID}`;
@@ -27,7 +26,7 @@ export interface HeroPinSectionProps {
 }
 
 export function HeroPinSection({ id = PIN_ID }: HeroPinSectionProps) {
-  const locale = useLocaleSafe();
+  const locale = useLocale();
   const isAr = locale === "ar";
 
   // prefers-reduced-motion — fall through to the static poster. The hook
@@ -82,17 +81,15 @@ export function HeroPinSection({ id = PIN_ID }: HeroPinSectionProps) {
           overflow: "hidden",
         }}
       >
-        <Lazy3D fallback={<HeroPosterFallback />}>
-          <PerfGate fallback={<HeroPosterFallback />}>
-            {/* Canvas is `aria-hidden` to screen readers — the overlay's
-                visually-hidden <ol> carries the narrative. */}
-            <div aria-hidden="true" style={{ position: "absolute", inset: 0 }}>
-              <HeroCanvas rtl={isAr} />
-            </div>
-            <HeroOverlay pinSelector={selector} />
-            <HeroScrollDriver pinSelector={selector} />
-          </PerfGate>
-        </Lazy3D>
+        <PerfGate fallback={<HeroPosterFallback />}>
+          {/* Canvas is `aria-hidden` to screen readers — the overlay's
+              visually-hidden <ol> carries the narrative. */}
+          <div aria-hidden="true" style={{ position: "absolute", inset: 0 }}>
+            <HeroCanvas rtl={isAr} />
+          </div>
+          <HeroOverlay pinSelector={selector} />
+          <HeroScrollDriver pinSelector={selector} />
+        </PerfGate>
       </div>
     </section>
   );

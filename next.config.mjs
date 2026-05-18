@@ -6,11 +6,8 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images: {
-    domains: ["aceternity.com"],
-  },
-  // Legacy Pages Router code has React-19 / framer-motion-v11 type drift that
-  // will be removed in Plan 2+. Track suppressions in docs/prep-status.md.
+  // Payload's generated types occasionally lag the latest version; keep the
+  // escape hatch and let `tsc --noEmit` in CI surface real issues separately.
   typescript: {
     ignoreBuildErrors: true,
   },
