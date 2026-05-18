@@ -9,10 +9,11 @@ import { AdaptiveDpr } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { HeroCameraRig } from "./HeroCameraRig";
+import { HeroDust } from "./HeroDust";
 import { HeroEnvironment } from "./HeroEnvironment";
 import { HeroLights } from "./HeroLights";
 import { HeroPosterFallback } from "./HeroPosterFallback";
-import { HeroSparks } from "./HeroSparks";
+import { HeroSceneFurnish } from "./HeroSceneFurnish";
 import { HeroWorkstation } from "./HeroWorkstation";
 
 export interface HeroCanvasProps {
@@ -33,9 +34,11 @@ export function HeroCanvas({ rtl = false }: HeroCanvasProps) {
       >
         <color attach="background" args={["#0F1419"]} />
         <AdaptiveDpr pixelated />
+        <fog attach="fog" args={["#0F1419", 4.5, 14]} />
         <HeroLights />
+        <HeroSceneFurnish />
         <HeroWorkstation />
-        <HeroSparks />
+        <HeroDust />
         <HeroEnvironment />
         <HeroCameraRig rtl={rtl} />
       </Canvas>

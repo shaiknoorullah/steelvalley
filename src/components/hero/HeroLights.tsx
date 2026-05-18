@@ -34,22 +34,31 @@ export function HeroLights() {
 
   return (
     <>
-      {/* Boosted lighting so the PBR-lit stages (Form/Edge/Place) actually
-          read as brushed steel, not muddy gray. The wireframe stage is no
-          longer affected by these — we override gl_FragColor before they
-          contribute. */}
-      <ambientLight intensity={1.0} color={0xffffff} />
+      {/* Three-point lighting tuned for industrial drama:
+          - low ambient so shadows have depth
+          - warm key + cool fill = stainless reflectivity that reads as alive
+          - rust spotlight ramps during Heat (forge glow) and Edge (raking rim) */}
+      <ambientLight intensity={0.45} color={0xb8c4d2} />
       <directionalLight
         position={[4, 6, 4]}
-        intensity={2.6}
-        color={0xffffff}
+        intensity={3.2}
+        color={0xffefd5}
         castShadow={false}
       />
-      {/* Secondary key from the opposite side — keeps the metal legible. */}
       <directionalLight
         position={[-3, 4, -2]}
-        intensity={0.8}
-        color={0xb8c4d2}
+        intensity={1.1}
+        color={0x88a3c2}
+      />
+      {/* Overhead workshop pendant — narrow cone over the workstation. */}
+      <spotLight
+        position={[0, 4.2, 0]}
+        target-position={[0, 0.8, 0]}
+        angle={0.45}
+        penumbra={0.6}
+        distance={6}
+        intensity={1.4}
+        color={0xfff0d4}
       />
       <spotLight
         ref={spotRef}

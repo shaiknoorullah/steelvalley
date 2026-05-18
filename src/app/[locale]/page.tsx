@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { HeroDemoPage } from "@/components/hero/HeroDemoPage";
+import { HomePage } from "@/components/home/HomePage";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   organizationJsonLd,
@@ -10,7 +10,7 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-export default async function HomePage({ params }: Props) {
+export default async function HomeRoute({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
@@ -21,7 +21,7 @@ export default async function HomePage({ params }: Props) {
         id="ld-local-business"
         data={localBusinessJsonLd({ addressLocality: "Jeddah" })}
       />
-      <HeroDemoPage />
+      <HomePage locale={locale} />
     </>
   );
 }

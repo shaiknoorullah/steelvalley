@@ -26,9 +26,13 @@ interface Waypoint {
   fov: number;
 }
 
-/** Five waypoints — one per stage boundary. See spec §3. */
+/** Five waypoints — one per stage boundary. See spec §3.
+ *
+ *  Place stage pulls back FAR (z=7, y=2.4) so the surrounding workshop
+ *  (back walls + second workstation from HeroSceneFurnish) frames the BT-1875
+ *  in context — "from drawing to reality, in a real shop". */
 export const HERO_WAYPOINTS: readonly Waypoint[] = [
-  // Earth — orthographic-feeling top-down
+  // Earth — top-down CAD plan view
   { p: 0.0, pos: [0, 8, 0.01], look: [0, 0, 0], fov: 35 },
   // Heat — tilts to ~30° elevation, gentle dolly in
   { p: 0.2, pos: [2.5, 6, 4], look: [0, 0.8, 0], fov: 40 },
@@ -36,8 +40,8 @@ export const HERO_WAYPOINTS: readonly Waypoint[] = [
   { p: 0.5, pos: [3.5, 3, 5], look: [0, 0.8, 0], fov: 45 },
   // Edge — dolly close on front-left bullnose
   { p: 0.7, pos: [1.5, 1.2, 2.2], look: [0.5, 0.85, 0.5], fov: 35 },
-  // Place — pull-back mid shot
-  { p: 1.0, pos: [3, 2, 4.5], look: [0, 0.8, 0], fov: 45 },
+  // Place — wide-angle pull-back, shop visible
+  { p: 1.0, pos: [4.5, 2.4, 6.5], look: [0, 1.0, 0], fov: 38 },
 ] as const;
 
 function lerpVec3(a: Vec3, b: Vec3, t: number): [number, number, number] {

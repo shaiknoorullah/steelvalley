@@ -47,12 +47,12 @@ const stages = [
 
 for (const s of stages) {
   const y = Math.round(s.offsetPct * PIN_PX_AT_900);
-  await snap("http://localhost:3001/", "ar", `hero-ar-${s.label}.png`, y, s.offsetPct === 0 ? 4000 : 2500);
+  await snap("http://localhost:3002/", "ar", `hero-ar-${s.label}.png`, y, s.offsetPct === 0 ? 4000 : 2500);
 }
 
 for (const s of stages) {
   const y = Math.round(s.offsetPct * PIN_PX_AT_900);
-  await snap("http://localhost:3001/en", "en", `hero-en-${s.label}.png`, y, s.offsetPct === 0 ? 4000 : 2500);
+  await snap("http://localhost:3002/en", "en", `hero-en-${s.label}.png`, y, s.offsetPct === 0 ? 4000 : 2500);
 }
 
 await browser.close();
