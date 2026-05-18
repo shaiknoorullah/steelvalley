@@ -588,3 +588,125 @@ label[data-component="label"] {
   background: var(--color-rust);
   border-color: var(--color-rust);
 }
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Measurement Stamp loader — spec §2.4
+   Lives on top of everything (z-index 9999) until LoaderShell unmounts it.
+   ─────────────────────────────────────────────────────────────────────────── */
+[data-loader] {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--color-void);
+  color: var(--color-bone);
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  align-items: center;
+  justify-items: center;
+  padding: var(--spacing-4);
+  overflow: hidden;
+  transition: opacity 200ms var(--ease-standard);
+  contain: strict;
+}
+
+[data-loader][data-revealed] {
+  pointer-events: none;
+}
+
+[data-loader-half] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  width: 100%;
+  transition: transform 350ms var(--ease-standard);
+  will-change: transform;
+}
+
+[data-loader-half-top] {
+  align-self: end;
+}
+
+[data-loader-half-bottom] {
+  align-self: start;
+}
+
+[data-loader][data-revealed] [data-loader-half-top] {
+  transform: translateY(-100%);
+}
+
+[data-loader][data-revealed] [data-loader-half-bottom] {
+  transform: translateY(100%);
+}
+
+[data-loader-stamp] {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-bone);
+  /* The stamp mixes Latin + Arabic glyphs; keep mono baseline LTR. */
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+[data-loader-dim] {
+  width: min(80vw, 640px);
+  height: auto;
+  color: var(--color-bone);
+  display: block;
+}
+
+[data-loader-anthem] {
+  font-family: var(--font-arabic-display);
+  font-size: clamp(18px, 2.4vw, 28px);
+  color: var(--color-bone);
+  text-align: center;
+  line-height: 1.4;
+}
+
+[data-loader-caption-en] {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  color: var(--color-steel);
+  text-align: center;
+}
+
+/* Rust section-cut line — fixed across the viewport mid-line.
+   Default origin is inline-start (LTR); RTL flips it below. */
+[data-loader-cut] {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline: 0;
+  height: 1px;
+  background: var(--color-rust);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 350ms var(--ease-standard);
+  pointer-events: none;
+}
+
+[data-loader][data-revealed] [data-loader-cut] {
+  transform: scaleX(1);
+}
+
+[dir="rtl"] [data-loader-cut] {
+  transform-origin: right center;
+}
+
+/* Reduced motion: skip the cut, just fade the loader out. */
+@media (prefers-reduced-motion: reduce) {
+  [data-loader-half] {
+    transition: none;
+    transform: none !important;
+  }
+  [data-loader-cut] {
+    display: none;
+  }
+  [data-loader][data-revealed] {
+    opacity: 0;
+  }
+}
