@@ -1,3 +1,21 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "overrides": [
+    {
+      "files": ["src/app/**", "src/ds/**", "src/components/**"],
+      "rules": {
+        "@next/next/no-img-element": "error"
+      }
+    },
+    {
+      "files": [
+        "src/pages/**",
+        "src/components/ui/**",
+        "src/components/custom/**"
+      ],
+      "rules": {
+        "@next/next/no-img-element": "off"
+      }
+    }
+  ]
 }

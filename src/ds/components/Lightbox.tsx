@@ -89,6 +89,7 @@ export function Lightbox({ images, startIndex = 0, open, onOpenChange }: Lightbo
           </button>
 
           <figure data-component="lightbox-figure">
+            {/* eslint-disable-next-line @next/next/no-img-element -- Lightbox accepts arbitrary external src with unknown dimensions; next/image not appropriate here. */}
             <img src={current.src} alt={current.alt} />
             {current.caption ? (
               <figcaption data-component="lightbox-caption">{current.caption}</figcaption>
