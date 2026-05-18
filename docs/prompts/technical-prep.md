@@ -44,7 +44,7 @@ Your job is to **build the technical foundation** while visual design is being p
 
 1. Install Tailwind CSS v4. Configure with:
    - Color tokens exactly per spec §2.1
-   - Type families per spec §2.2 (use CSS @font-face from local files; user will provide font licenses — load placeholders for now)
+   - Type families per spec §2.2 — five free/OFL Google Fonts (Saira Condensed, Inter, JetBrains Mono, Tajawal, IBM Plex Sans Arabic). No license handoff required; loaded via `next/font/google` in Plan 5.
    - Spacing scale on an 8px base (provisional — Claude Design confirms)
    - Motion tokens: durations (150/250/350/600ms), easing curves (provisional)
 2. Add `prefers-reduced-motion` media query helpers.

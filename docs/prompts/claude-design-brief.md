@@ -19,12 +19,12 @@ The brand is the material. Honest, technical, surgical. Steel speaks; the design
 - `#0F1419` void (hero/scene backdrop only)
 
 **Typography:**
-- Latin display: Söhne Breit (or Aktiv Grotesk Cd) — condensed grotesk, heavy weights for headlines
-- Latin body: Aktiv Grotesk
-- Mono accent: JetBrains Mono — used for spec labels (dimensions, gauge, material, finish)
-- Arabic display: 29LT Bukra
-- Arabic body: TPTQ Massira
-- Latin and Arabic must feel like one voice — match x-height, weight rhythm, and tracking
+- Latin display: **Saira Condensed** (Black 900 / ExtraBold 800) — free/OFL via Google Fonts. Heavy condensed industrial grotesk; honours the original Söhne Schmal intent without the license cost.
+- Latin body: **Inter** (Regular 400 / Bold 700) — free/OFL. The canonical Aktiv Grotesk alternative, optimised for screen.
+- Mono accent: **JetBrains Mono** (Regular 400 / SemiBold 600) — free/OFL. Used for spec labels (dimensions, gauge, material, finish).
+- Arabic display: **Tajawal** (Black 900) — free/OFL by Boutros Fonts. Geometric modern Arabic; closest free analog to 29LT Bukra.
+- Arabic body: **IBM Plex Sans Arabic** (Regular 400 / Medium 500) — free/OFL. Modern naskh, designed for long-form reading; closest free analog to TPTQ Massira.
+- Latin and Arabic must feel like one voice — match x-height, weight rhythm, and tracking. All five families are commercial-use safe with no attribution required in production.
 
 **Voice:** "We measure twice. Steel knows." Measured, technical, confident. No exclamation marks. No marketing hyperbole. Numbers (dimensions, material grades, gauges) are content, not decoration.
 
