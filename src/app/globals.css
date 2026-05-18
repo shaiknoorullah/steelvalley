@@ -1,1 +1,88 @@
-/* Plan 3 (design system tokens) will fill this in. */
+@import "tailwindcss";
+
+/*
+  Refined Industrial — design tokens (provisional)
+  Source of truth: docs/superpowers/specs/2026-05-18-steelvalley-redesign.md §2.1–§2.2
+  Claude Design's final tokens replace the values; do not change variable NAMES.
+*/
+
+@theme {
+  /* Palette */
+  --color-ink: #0a0a0b;
+  --color-graphite: #1f2937;
+  --color-steel: #c7cdd6;
+  --color-bone: #f2f0ec;
+  --color-rust: #e2611b;
+  --color-void: #0f1419;
+
+  /* Type families */
+  --font-display: var(--font-latin-display-loaded), "Saira Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: var(--font-latin-body-loaded), "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-latin-mono-loaded), "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  --font-arabic-display: var(--font-arabic-display-loaded), "Tajawal", system-ui, sans-serif;
+  --font-arabic-body: var(--font-arabic-body-loaded), "IBM Plex Sans Arabic", system-ui, sans-serif;
+
+  /* Spacing — 8px base (provisional) */
+  --spacing-1: 0.5rem;
+  --spacing-2: 1rem;
+  --spacing-3: 1.5rem;
+  --spacing-4: 2rem;
+  --spacing-6: 3rem;
+  --spacing-8: 4rem;
+  --spacing-12: 6rem;
+
+  /* Motion (provisional) */
+  --duration-instant: 150ms;
+  --duration-fast: 250ms;
+  --duration-base: 350ms;
+  --duration-slow: 600ms;
+
+  --ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-enter: cubic-bezier(0, 0, 0.2, 1);
+
+  /* Focus */
+  --color-focus: var(--color-rust);
+}
+
+/* Direction-aware logical defaults */
+html {
+  font-family: var(--font-body);
+}
+
+html[lang="ar"] {
+  font-family: var(--font-arabic-body);
+}
+
+html[lang="ar"] :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-arabic-display);
+}
+
+html:not([lang="ar"]) :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-display);
+}
+
+/* Focus ring — never removed */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Respect prefers-reduced-motion globally for token-driven transitions */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Body baseline */
+body {
+  background: var(--color-bone);
+  color: var(--color-ink);
+  margin: 0;
+}

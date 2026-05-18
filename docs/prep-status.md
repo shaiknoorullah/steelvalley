@@ -8,7 +8,7 @@ Live status for the technical-prep work track. Updated at the end of every plan.
 |---|------|--------|-------|
 | 1 | Security & Scaffold | ✅ complete | Branch `redesign`, Next 15 + React 19, App Router alongside Pages Router |
 | 2 | Backend Foundation (Payload + Supabase + i18n) | ⏸ pending | Blocked on Supabase project credentials |
-| 3 | Design System + Primitives | ⏸ pending | Will absorb final tokens from Claude Design when they land |
+| 3 | Design System + Primitives | ✅ complete (provisional tokens) | All 17 primitives RTL-safe; `/dev/components` route shows both directions; axe checks pass |
 | 4 | Conversion + Discovery | ⏸ pending | Resend API key required |
 | 5 | Performance Scaffolding | ⏸ pending | |
 
@@ -16,8 +16,15 @@ Live status for the technical-prep work track. Updated at the end of every plan.
 - `npm install`
 - `npm run dev` — serves the existing Pages Router site at http://localhost:3000
 - `http://localhost:3000/_app-router-health` — confirms App Router is wired
-- `npm test` — Vitest smoke test for the health route
+- `http://localhost:3000/dev/components` — primitive showcase, LTR + RTL
+- `npm test` — Vitest unit suite (health route + DS component tests)
+- `npm run test:e2e` — Playwright + axe-core a11y assertions
 - `npm run build` — both routers build
+
+## What's waiting on Claude Design (Plan 3 hand-off)
+- Final token values (palette, spacing scale, type scale, motion curves, focus ring spec)
+- The CAD-style spec block template
+- Component-state mockups (default / hover / focus / active / disabled)
 
 ## What's blocked / waiting on user
 - Supabase project + connection string (for Plan 2)
