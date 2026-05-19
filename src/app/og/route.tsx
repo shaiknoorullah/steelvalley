@@ -2,16 +2,19 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
 
+// Satori (the renderer behind ImageResponse) doesn't support all OpenType
+// GSUB lookup formats used by Arabic system fonts, which can crash the
+// route. Keep the OG image Latin-only and stage the brand line in Saira
+// Condensed-ish weight so it reads as identity art rather than a literal
+// translation of the page title.
+
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const title = url.searchParams.get("title") ?? "Steel Valley";
-  const locale = url.searchParams.get("locale") === "en" ? "en" : "ar";
-  const dir = locale === "ar" ? "rtl" : "ltr";
 
   return new ImageResponse(
     (
       <div
-        dir={dir}
         style={{
           width: "100%",
           height: "100%",
@@ -34,7 +37,14 @@ export async function GET(req: Request) {
         >
           STEEL VALLEY
         </div>
-        <div style={{ fontSize: 88, lineHeight: 1.05, fontWeight: 700 }}>
+        <div
+          style={{
+            fontSize: 88,
+            lineHeight: 1.05,
+            fontWeight: 700,
+            maxWidth: "78%",
+          }}
+        >
           {title}
         </div>
         <div
@@ -42,11 +52,10 @@ export async function GET(req: Request) {
             fontSize: 24,
             color: "#e2611b",
             fontFamily: "monospace",
+            letterSpacing: 2,
           }}
         >
-          {locale === "ar"
-            ? "صناعة الفولاذ — جدة"
-            : "stainless steel fabrication — jeddah"}
+          stainless steel fabrication — jeddah
         </div>
       </div>
     ),
