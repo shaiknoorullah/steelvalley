@@ -15,14 +15,12 @@ interface Props {
 
 const NAV: Record<"ar" | "en", { label: string; href: string }[]> = {
   en: [
-    { label: "work", href: "/work" },
     { label: "services", href: "/services" },
     { label: "products", href: "/products" },
     { label: "about", href: "/about" },
     { label: "journal", href: "/blog" },
   ],
   ar: [
-    { label: "أعمالنا", href: "/work" },
     { label: "الخدمات", href: "/services" },
     { label: "المنتجات", href: "/products" },
     { label: "عن المصنع", href: "/about" },

@@ -99,7 +99,9 @@ export function Hero2D({ locale }: Props) {
 
   // IntlLink auto-prefixes the active locale; pass bare path.
   const contactHref = "/contact";
-  const workHref = "/work";
+  // /work doesn't have a page yet — for the secondary CTA, link to
+  // the home page's featured-case anchor for now.
+  const workHref = "/#featured-case";
 
   const caps = isAr ? CAPS_AR : CAPS_EN;
 

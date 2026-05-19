@@ -92,7 +92,7 @@ export function HomePage({ locale }: Props) {
       </section>
 
       {/* ── 5. Featured case ──────────────────────────────────────── */}
-      <section className="sv-home-section sv-home-feature" aria-labelledby="feat-title">
+      <section id="featured-case" className="sv-home-section sv-home-feature" aria-labelledby="feat-title">
         <div className="sv-home-container">
           <p className="sv-home-eyebrow">{c.featuredCase.eyebrow}</p>
           <h2 id="feat-title" className="sv-home-section-title">{c.featuredCase.headline}</h2>
