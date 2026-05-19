@@ -13,6 +13,7 @@ import { WhatsAppCTA } from "@/components/marketing/WhatsAppCTA";
 import { CookieBanner } from "@/components/marketing/CookieBanner";
 import { OpenPanelGate } from "@/components/analytics/OpenPanelGate";
 import { EventBridge } from "@/components/analytics/EventBridge";
+import { SiteHeader } from "@/components/page-chrome/SiteHeader";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -57,6 +58,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <ViewTransitions>
           <TransitionStyles />
           <NextIntlClientProvider messages={messages}>
+            <SiteHeader locale={safeLocale} />
             <LoaderShell locale={safeLocale}>{children}</LoaderShell>
             <LeadMagnetPopup />
             <WhatsAppCTA />

@@ -17,6 +17,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "@/ds/components/Link";
 import gsap from "gsap";
+import { IndustrialDrawingBg } from "./IndustrialDrawingBg";
 
 interface Props {
   /** "ar" or "en" — passed from the server HomePage so we don't depend
@@ -110,6 +111,7 @@ export function Hero2D({ locale }: Props) {
       className="sv-hero2d"
       dir={isAr ? "rtl" : "ltr"}
     >
+      <IndustrialDrawingBg />
       <div className="sv-hero2d__grid" aria-hidden="true" />
       <div className="sv-hero2d__vignette" aria-hidden="true" />
       <div className="sv-hero2d__corner sv-hero2d__corner--tl" aria-hidden="true">
