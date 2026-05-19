@@ -38,8 +38,8 @@ export function CookieBanner() {
     >
       <p>
         {locale === "ar"
-          ? "نستخدم مجموعة محدودة من ملفات تتبع التحليلات (OpenPanel) لفهم حركة الزوار، بدون أي شبكات إعلانية خارجية."
-          : "We use a small set of analytics cookies (OpenPanel) to understand traffic. No third-party ad networks."}
+          ? "نستخدم مجموعةً محدودة من ملفات الكوكيز لفهم حركة الزوّار وتحسين الموقع. لا شبكات إعلانية، ولا بيع للبيانات."
+          : "We use a small set of cookies to understand traffic and improve the site. No ad networks, no data resale."}
       </p>
       <div style={{ display: "flex", gap: "0.5rem" }}>
         <Button variant="ghost" onClick={reject}>

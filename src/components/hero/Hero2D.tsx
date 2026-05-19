@@ -96,8 +96,9 @@ export function Hero2D({ locale }: Props) {
   const secondaryCta = isAr ? "شاهد أعمالنا" : "see our work";
   const mono = "304 · 1.2mm · TIG";
 
-  const contactHref = isAr ? "/contact" : "/en/contact";
-  const workHref = isAr ? "/work" : "/en/work";
+  // IntlLink auto-prefixes the active locale; pass bare path.
+  const contactHref = "/contact";
+  const workHref = "/work";
 
   const caps = isAr ? CAPS_AR : CAPS_EN;
 
