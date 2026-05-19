@@ -38,8 +38,8 @@ export function CookieBanner() {
     >
       <p>
         {locale === "ar"
-          ? "نستخدم مجموعةً محدودة من ملفات الكوكيز لفهم حركة الزوّار وتحسين الموقع. لا شبكات إعلانية، ولا بيع للبيانات."
-          : "We use a small set of cookies to understand traffic and improve the site. No ad networks, no data resale."}
+          ? "نستخدم ملفات الكوكيز لتحسين تجربتك."
+          : "We use cookies to improve your experience."}
       </p>
       <div style={{ display: "flex", gap: "0.5rem" }}>
         <Button variant="ghost" onClick={reject}>

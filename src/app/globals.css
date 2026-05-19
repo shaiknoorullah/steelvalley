@@ -19,7 +19,7 @@
   --font-display: var(--font-latin-display-loaded), "Saira Condensed", "Arial Narrow", system-ui, sans-serif;
   --font-body: var(--font-latin-body-loaded), "Inter", system-ui, sans-serif;
   --font-mono: var(--font-latin-mono-loaded), "JetBrains Mono", ui-monospace, "SF Mono", monospace;
-  --font-arabic-display: var(--font-arabic-display-loaded), "Tajawal", system-ui, sans-serif;
+  --font-arabic-display: var(--font-arabic-display-loaded), "Reem Kufi", "Noto Kufi Arabic", system-ui, sans-serif;
   --font-arabic-body: var(--font-arabic-body-loaded), "IBM Plex Sans Arabic", system-ui, sans-serif;
 
   /* Spacing — 8px base (provisional) */

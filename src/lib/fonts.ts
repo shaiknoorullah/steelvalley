@@ -2,7 +2,7 @@ import {
   Inter,
   JetBrains_Mono,
   Saira_Condensed,
-  Tajawal,
+  Reem_Kufi,
   IBM_Plex_Sans_Arabic,
 } from "next/font/google";
 
@@ -41,9 +41,11 @@ export const latinMono = JetBrains_Mono({
 
 // --- Arabic ---
 
-export const arabicDisplay = Tajawal({
+// Reem Kufi — geometric Kufic, monolinear, bold straight strokes that
+// echo Saira Condensed's industrial display energy. OFL-licensed.
+export const arabicDisplay = Reem_Kufi({
   subsets: ["arabic"],
-  weight: ["900"], // Black — one weight, display-only
+  weight: ["600", "700"],
   variable: "--font-arabic-display-loaded",
   display: "swap",
   preload: true,
