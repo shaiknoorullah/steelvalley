@@ -2,7 +2,6 @@ import {
   Inter,
   JetBrains_Mono,
   Saira_Condensed,
-  Reem_Kufi,
   IBM_Plex_Sans_Arabic,
 } from "next/font/google";
 
@@ -41,11 +40,12 @@ export const latinMono = JetBrains_Mono({
 
 // --- Arabic ---
 
-// Reem Kufi — geometric Kufic, monolinear, bold straight strokes that
-// echo Saira Condensed's industrial display energy. OFL-licensed.
-export const arabicDisplay = Reem_Kufi({
+// IBM Plex Sans Arabic — engineered sans with sharp vertical strokes
+// and a modern industrial feel. Same family for display + body so the
+// page reads as one typographic system. OFL-licensed.
+export const arabicDisplay = IBM_Plex_Sans_Arabic({
   subsets: ["arabic"],
-  weight: ["600", "700"],
+  weight: ["700"],
   variable: "--font-arabic-display-loaded",
   display: "swap",
   preload: true,
@@ -53,7 +53,7 @@ export const arabicDisplay = Reem_Kufi({
 
 export const arabicBody = IBM_Plex_Sans_Arabic({
   subsets: ["arabic"],
-  weight: ["400", "500"], // Regular + Medium — body weights
+  weight: ["400", "500"],
   variable: "--font-arabic-body-loaded",
   display: "swap",
   preload: true,
