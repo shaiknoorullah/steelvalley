@@ -12,7 +12,7 @@
  *   7. Footer
  */
 import { Link } from "@/ds/components/Link";
-import { HeroPinSection } from "@/components/hero/HeroPinSection";
+import { Hero2D } from "@/components/hero/Hero2D";
 import { getHomeCopy } from "./HomeCopy";
 
 interface Props {
@@ -25,7 +25,7 @@ export function HomePage({ locale }: Props) {
 
   return (
     <main id="main-content" className="sv-home">
-      <HeroPinSection />
+      <Hero2D locale={locale} />
 
       {/* ── 2. Capabilities ───────────────────────────────────────── */}
       <section className="sv-home-section sv-home-capabilities" aria-labelledby="caps-title">
