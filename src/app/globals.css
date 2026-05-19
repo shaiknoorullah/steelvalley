@@ -2570,8 +2570,9 @@ html[lang="ar"] [data-legal-article] h2 {
               border-color 220ms var(--ease-standard),
               backdrop-filter 220ms var(--ease-standard);
 }
-.sv-header[data-scrolled] {
-  background: rgba(15, 20, 25, 0.85);
+.sv-header[data-scrolled],
+.sv-header[data-opaque] {
+  background: rgba(15, 20, 25, 0.92);
   border-bottom-color: rgba(199, 205, 214, 0.12);
   backdrop-filter: saturate(160%) blur(10px);
   -webkit-backdrop-filter: saturate(160%) blur(10px);

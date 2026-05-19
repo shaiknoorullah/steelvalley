@@ -1,11 +1,17 @@
 "use client";
 /**
  * SiteHeader — top navbar on every locale-prefixed page (excluded for
- * /admin which has its own chrome). Transparent over the hero, fades
- * to opaque void on scroll. Mobile collapses to a hamburger that
- * reveals a full-screen menu.
+ * /admin which has its own chrome).
+ *
+ * On the home route the bar starts transparent so the hero anthem can
+ * breathe, then fades to opaque void on scroll. On every other page —
+ * which uses a light bone background — the bar is opaque from the
+ * first frame, otherwise the bone-on-bone links go invisible.
+ *
+ * Mobile collapses to a hamburger that reveals a full-screen menu.
  */
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Link } from "@/ds/components/Link";
 import { LocaleToggle } from "@/components/i18n/LocaleToggle";
 
@@ -35,6 +41,11 @@ const CLOSE = { en: "close", ar: "إغلاق" } as const;
 export function SiteHeader({ locale }: Props) {
   const isAr = locale === "ar";
   const safe = (isAr ? "ar" : "en") as "ar" | "en";
+  const pathname = usePathname();
+  // The home route is "/" on AR (default locale, no prefix) and "/en"
+  // on EN. Any deeper segment means we're on a body page with a light
+  // background — force the navbar opaque so the links read.
+  const isHome = pathname === "/" || pathname === "/en";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -59,6 +70,7 @@ export function SiteHeader({ locale }: Props) {
         className="sv-header"
         data-scrolled={scrolled || undefined}
         data-open={open || undefined}
+        data-opaque={!isHome || undefined}
         dir={isAr ? "rtl" : "ltr"}
       >
         <div className="sv-header__inner">
