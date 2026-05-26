@@ -15,7 +15,8 @@
     "size": "npm run build && size-limit",
     "size:why": "npm run build && size-limit --why",
     "lhci": "npm run build && lhci autorun",
-    "migrate:airtable": "tsx scripts/migrate-airtable-to-payload.ts"
+    "migrate:airtable": "tsx scripts/migrate-airtable-to-payload.ts",
+    "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
