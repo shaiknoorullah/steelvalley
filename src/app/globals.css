@@ -2592,27 +2592,23 @@ html[lang="ar"] [data-legal-article] h2 {
 .sv-header__brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-bone);
   text-decoration: none;
   margin-inline-end: auto;
+  /* RTL: keep the logo upright; the link itself flips by margin only */
 }
-.sv-header__brand-mark {
+.sv-header__brand-logo {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  border: 1px solid var(--color-rust);
-  color: var(--color-rust);
-  font-family: var(--font-display);
-  font-size: 12px;
-  letter-spacing: 0;
+}
+.sv-header__brand-logo img {
+  display: block;
+  width: auto;
+  height: 34px;
+  /* Slight glow on the metallic so it reads against translucent dark bg */
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45));
+}
+@media (max-width: 900px) {
+  .sv-header__brand-logo img { height: 30px; }
 }
 .sv-header__nav {
   display: flex;
@@ -2763,5 +2759,4 @@ html[lang="ar"] [data-legal-article] h2 {
   .sv-header__actions { display: none; }
   .sv-header__burger { display: flex; }
   .sv-header__inner { padding: 0.75rem 1.25rem; }
-  .sv-header__brand-word { display: none; }
 }

@@ -75,8 +75,40 @@ export function SiteHeader({ locale }: Props) {
       >
         <div className="sv-header__inner">
           <Link href="/" className="sv-header__brand" aria-label="Steel Valley — home">
-            <span className="sv-header__brand-mark">SV</span>
-            <span className="sv-header__brand-word">STEEL · VALLEY</span>
+            <picture className="sv-header__brand-logo">
+              {/* Mobile: monogram only */}
+              <source
+                media="(max-width: 900px)"
+                type="image/avif"
+                srcSet="/images/logo/logo-mark.avif 1x, /images/logo/logo-mark@2x.avif 2x"
+              />
+              <source
+                media="(max-width: 900px)"
+                type="image/webp"
+                srcSet="/images/logo/logo-mark.webp 1x, /images/logo/logo-mark@2x.webp 2x"
+              />
+              <source
+                media="(max-width: 900px)"
+                srcSet="/images/logo/logo-mark.png 1x, /images/logo/logo-mark@2x.png 2x"
+              />
+              {/* Desktop: full horizontal lockup */}
+              <source
+                type="image/avif"
+                srcSet="/images/logo/logo-full.avif 1x, /images/logo/logo-full@2x.avif 2x"
+              />
+              <source
+                type="image/webp"
+                srcSet="/images/logo/logo-full.webp 1x, /images/logo/logo-full@2x.webp 2x"
+              />
+              <img
+                src="/images/logo/logo-full.png"
+                srcSet="/images/logo/logo-full.png 1x, /images/logo/logo-full@2x.png 2x"
+                alt=""
+                width={480}
+                height={150}
+                decoding="async"
+              />
+            </picture>
           </Link>
 
           <nav className="sv-header__nav" aria-label={isAr ? "روابط الموقع" : "Site"}>
