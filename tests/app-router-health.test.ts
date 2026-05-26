@@ -86,3 +86,72 @@ describe("Payload admin + REST", () => {
     expect(json.totalDocs).toBeGreaterThanOrEqual(5);
   });
 });
+
+// Plan 2 end-state assertions. Every collection + global from
+// payload.config.ts must be reachable via REST. Public collections
+// return 200; locked ones return 403 — that proves they're mounted
+// and access-controlled, which is the intended Plan 2 posture.
+describe("Plan 2: collections mounted", () => {
+  const PUBLIC_COLLECTIONS = [
+    "media",
+    "categories",
+    "products",
+    "services",
+    "authors",
+    "posts",
+    "pages",
+  ] as const;
+  const LOCKED_COLLECTIONS = [
+    "users",
+    "lead-magnets",
+    "enquiries",
+    "leads",
+  ] as const;
+
+  for (const slug of PUBLIC_COLLECTIONS) {
+    skipIfDown(`/api/${slug} responds 200 with docs[]`, async () => {
+      const res = await fetch(`${BASE}/api/${slug}`);
+      expect(res.status).toBe(200);
+      const json = (await res.json()) as { docs?: unknown[] };
+      expect(Array.isArray(json.docs)).toBe(true);
+    });
+  }
+
+  for (const slug of LOCKED_COLLECTIONS) {
+    skipIfDown(`/api/${slug} responds 401 or 403 (locked but mounted)`, async () => {
+      const res = await fetch(`${BASE}/api/${slug}`);
+      expect([401, 403]).toContain(res.status);
+    });
+  }
+});
+
+describe("Plan 2: globals mounted", () => {
+  for (const slug of ["settings", "nav"] as const) {
+    skipIfDown(`/api/globals/${slug} responds 200`, async () => {
+      const res = await fetch(`${BASE}/api/globals/${slug}`);
+      expect(res.status).toBe(200);
+    });
+  }
+});
+
+describe("Plan 2: bilingual field persistence", () => {
+  // The 'storage' category is seeded with English "Storage" and Arabic
+  // "التخزين". Round-tripping via ?locale= proves localized fields
+  // persist per-locale rather than collapsing to the fallback value.
+  skipIfDown("category 'storage' has different localized names per locale", async () => {
+    const [enRes, arRes] = await Promise.all([
+      fetch(`${BASE}/api/categories?where[slug][equals]=storage&locale=en&limit=1`),
+      fetch(`${BASE}/api/categories?where[slug][equals]=storage&locale=ar&limit=1`),
+    ]);
+    expect(enRes.status).toBe(200);
+    expect(arRes.status).toBe(200);
+    const enJson = (await enRes.json()) as { docs: { name: string }[] };
+    const arJson = (await arRes.json()) as { docs: { name: string }[] };
+    expect(enJson.docs).toHaveLength(1);
+    expect(arJson.docs).toHaveLength(1);
+    expect(enJson.docs[0].name).toBe("Storage");
+    expect(arJson.docs[0].name).not.toBe(enJson.docs[0].name);
+    // Arabic Unicode block (U+0600 – U+06FF)
+    expect(arJson.docs[0].name).toMatch(/[؀-ۿ]/);
+  });
+});

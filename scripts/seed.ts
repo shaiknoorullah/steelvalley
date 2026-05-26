@@ -19,12 +19,15 @@ async function seed() {
   const payload = await getPayload({ config });
 
   // ── Categories ────────────────────────────────────────────────
+  // EN name lands on create; AR name is written on every run so the
+  // bilingual smoke test has a fixture even if EN was seeded before
+  // localization was wired up.
   const categories = [
-    { name: "Storage", slug: "storage", order: 1 },
-    { name: "Cooking", slug: "cooking", order: 2 },
-    { name: "Workstations", slug: "workstations", order: 3 },
-    { name: "Washing", slug: "washing", order: 4 },
-    { name: "Hoods", slug: "hoods", order: 5 },
+    { slug: "storage", name: "Storage", nameAr: "التخزين", order: 1 },
+    { slug: "cooking", name: "Cooking", nameAr: "الطهي", order: 2 },
+    { slug: "workstations", name: "Workstations", nameAr: "محطات العمل", order: 3 },
+    { slug: "washing", name: "Washing", nameAr: "الغسيل", order: 4 },
+    { slug: "hoods", name: "Hoods", nameAr: "الشفاطات", order: 5 },
   ];
 
   for (const cat of categories) {
@@ -33,12 +36,26 @@ async function seed() {
       where: { slug: { equals: cat.slug } },
       limit: 1,
     });
+    let id: string | number;
     if (existing.totalDocs === 0) {
-      await payload.create({ collection: "categories", data: cat, locale: "en" });
-      payload.logger.info(`Seeded category: ${cat.slug}`);
+      const created = await payload.create({
+        collection: "categories",
+        data: { name: cat.name, slug: cat.slug, order: cat.order },
+        locale: "en",
+      });
+      id = created.id;
+      payload.logger.info(`Seeded category EN: ${cat.slug}`);
     } else {
-      payload.logger.info(`Category exists: ${cat.slug} (skipped)`);
+      id = existing.docs[0].id;
+      payload.logger.info(`Category exists: ${cat.slug}`);
     }
+    await payload.update({
+      collection: "categories",
+      id,
+      data: { name: cat.nameAr },
+      locale: "ar",
+    });
+    payload.logger.info(`Updated category AR: ${cat.slug}`);
   }
 
   // ── Settings global (English baseline; Arabic added via admin) ─
