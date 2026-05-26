@@ -4,6 +4,7 @@ import { buildConfig } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { s3Storage } from "@payloadcms/storage-s3";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import sharp from "sharp";
 import { Users } from "./payload/collections/Users";
 import { Media } from "./payload/collections/Media";
 import { LeadMagnets } from "./payload/collections/LeadMagnets";
@@ -28,6 +29,7 @@ export default buildConfig({
   editor: lexicalEditor(),
   collections: [Users, Media, LeadMagnets, Categories, Products, Services, Authors, Posts, Pages, Enquiries, Leads],
   globals: [Settings, Nav],
+  sharp,
   localization: {
     locales: [
       { label: "العربية", code: "ar", rtl: true },
